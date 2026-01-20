@@ -1,0 +1,48 @@
+2025/09/15 12:28:29 metadata-fill-fs starting; workers=8 scan_new=false recursive=true min_mb=1
+2025/09/15 12:28:29 roots=[/mnt/patents/originals]
+2025/09/15 12:28:29 Loaded 2947 processed archives
+2025/09/15 12:28:29 Found 1 unprocessed archives under /tmp/reprocess_single2
+2025/09/15 12:28:30 Starting extraction. Current patents: 8100601
+2025/09/15 12:28:30 Worker 3 processing: I20170525.tar
+2025/09/15 12:29:00 ========== STATISTICS ==========
+2025/09/15 12:29:00 Archives processed: 0
+2025/09/15 12:29:00 Patents extracted: 0
+2025/09/15 12:29:00 Patents inserted: 0
+2025/09/15 12:29:00 Errors: 0
+2025/09/15 12:29:00 Time elapsed: 0.01 hours
+2025/09/15 12:29:00 Rate: 0 patents/hour
+2025/09/15 12:29:00 ================================
+2025/09/15 12:29:02 Current total patents in database: 8100601
+2025/09/15 12:29:30 ========== STATISTICS ==========
+2025/09/15 12:29:30 Archives processed: 0
+2025/09/15 12:29:30 Patents extracted: 0
+2025/09/15 12:29:30 Patents inserted: 0
+2025/09/15 12:29:30 Errors: 0
+2025/09/15 12:29:30 Time elapsed: 0.02 hours
+2025/09/15 12:29:30 Rate: 0 patents/hour
+2025/09/15 12:29:30 ================================
+2025/09/15 12:29:32 Current total patents in database: 8100601
+2025/09/15 12:30:00 ========== STATISTICS ==========
+2025/09/15 12:30:00 Archives processed: 0
+2025/09/15 12:30:00 Patents extracted: 0
+2025/09/15 12:30:00 Patents inserted: 0
+2025/09/15 12:30:00 Errors: 0
+2025/09/15 12:30:00 Time elapsed: 0.03 hours
+2025/09/15 12:30:00 Rate: 0 patents/hour
+2025/09/15 12:30:00 ================================
+2025/09/15 12:30:02 Current total patents in database: 8100601
+2025/09/15 12:30:04 Extracted 8027 patents from 8027 XML files in I20170525.tar
+2025/09/15 12:30:22 Successfully inserted 8027 out of 8027 patents
+2025/09/15 12:30:24 
+Extraction Complete!
+2025/09/15 12:30:24 Initial patents: 8100601
+2025/09/15 12:30:24 Final patents: 8100601
+2025/09/15 12:30:24 Patents added: 0
+2025/09/15 12:30:24 ========== STATISTICS ==========
+2025/09/15 12:30:24 Archives processed: 1
+2025/09/15 12:30:24 Patents extracted: 8027
+2025/09/15 12:30:24 Patents inserted: 8027
+2025/09/15 12:30:24 Errors: 0
+2025/09/15 12:30:24 Time elapsed: 0.03 hours
+2025/09/15 12:30:24 Rate: 250791 patents/hour
+2025/09/15 12:30:24 ================================

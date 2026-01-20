@@ -1,0 +1,874 @@
+package main
+
+import (
+	"archive/tar"
+	"archive/zip"
+	"bytes"
+	"compress/gzip"
+	"database/sql"
+	"encoding/json"
+	"encoding/xml"
+	"fmt"
+	"io"
+	"io/ioutil"
+	"log"
+	"os"
+	"path/filepath"
+	"regexp"
+	"runtime"
+	"strconv"
+	"strings"
+	"sync"
+	"sync/atomic"
+	"time"
+
+	_ "github.com/lib/pq"
+)
+
+const (
+	dbHost     = "localhost"
+	dbPort     = 5432
+	dbName     = "companies_db"
+	dbUser     = "postgres"
+	dbPassword = "qwklmn711"
+	
+	workDir       = "/home/mark/projects/patent_extractor/temp"
+	logDir        = "/home/mark/projects/patent_extractor/logs"
+	originalsDir  = "/mnt/patents/originals"  // Keep pointing to patent archives
+	processedFile = "/home/mark/projects/patent_extractor/processed_archives.txt"
+	
+	maxWorkers = 8 // Number of parallel workers
+	batchSize  = 100 // Patents per batch insert
+)
+
+type Stats struct {
+	ArchivesProcessed int64
+	PatentsExtracted  int64
+	PatentsInserted   int64
+	Errors           int64
+	StartTime        time.Time
+}
+
+type Patent struct {
+	PubNumber       string          `json:"pub_number"`
+	Title           string          `json:"title"`
+	AbstractText    string          `json:"abstract_text"`
+	DescriptionText string          `json:"description_text"`
+	Claims          []string        `json:"claims"`
+	FilingDate      *time.Time      `json:"filing_date"`
+	PubDate         *time.Time      `json:"pub_date"`
+	Year            int             `json:"year"`
+	Inventors       json.RawMessage `json:"inventors"`
+	Assignees       json.RawMessage `json:"assignees"`
+	RawXMLPath      string          `json:"raw_xml_path"`
+}
+
+type Inventor struct {
+	Name    string            `json:"name"`
+	Type    string            `json:"type"`
+	Address map[string]string `json:"address,omitempty"`
+}
+
+type Assignee struct {
+	Name    string            `json:"name"`
+	Type    string            `json:"type"`
+	Address map[string]string `json:"address,omitempty"`
+}
+
+type Extractor struct {
+	db               *sql.DB
+	processedArchives map[string]bool
+	mu               sync.RWMutex
+	stats            *Stats
+	workChan         chan string
+	resultChan       chan []Patent
+	wg               sync.WaitGroup
+}
+
+func NewExtractor() (*Extractor, error) {
+	// Connect to database
+	psqlInfo := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable",
+		dbHost, dbPort, dbUser, dbPassword, dbName)
+	
+	db, err := sql.Open("postgres", psqlInfo)
+	if err != nil {
+		return nil, err
+	}
+	
+	if err = db.Ping(); err != nil {
+		return nil, err
+	}
+	
+	// Set connection pool settings
+	db.SetMaxOpenConns(25)
+	db.SetMaxIdleConns(5)
+	
+	e := &Extractor{
+		db:                db,
+		processedArchives: make(map[string]bool),
+		stats:            &Stats{StartTime: time.Now()},
+		workChan:         make(chan string, 100),
+		resultChan:       make(chan []Patent, 100),
+	}
+	
+	// Load processed archives
+	e.loadProcessedArchives()
+	
+	// Create work directory
+	os.MkdirAll(workDir, 0755)
+	os.MkdirAll(logDir, 0755)
+        os.MkdirAll(filepath.Join(originalsDir, "NewFiles"), 0775)
+	
+	return e, nil
+}
+
+func (e *Extractor) loadProcessedArchives() {
+	data, err := ioutil.ReadFile(processedFile)
+	if err != nil {
+		return
+	}
+	
+	lines := strings.Split(string(data), "\n")
+	for _, line := range lines {
+		if line = strings.TrimSpace(line); line != "" {
+			e.processedArchives[line] = true
+		}
+	}
+	
+	log.Printf("Loaded %d processed archives", len(e.processedArchives))
+}
+
+func (e *Extractor) markProcessed(archive string) {
+	e.mu.Lock()
+	defer e.mu.Unlock()
+	
+	e.processedArchives[archive] = true
+	
+	f, err := os.OpenFile(processedFile, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+	if err != nil {
+		return
+	}
+	defer f.Close()
+	
+	f.WriteString(archive + "\n")
+}
+
+func (e *Extractor) isProcessed(archive string) bool {
+	e.mu.RLock()
+	defer e.mu.RUnlock()
+	return e.processedArchives[archive]
+}
+
+func (e *Extractor) getArchives() []string {
+	var archives []string
+	
+	// Get all archive files
+	patterns := []string{
+		filepath.Join(originalsDir, "NewFiles", "*.ZIP"),
+		filepath.Join(originalsDir, "NewFiles", "*.zip"),
+		filepath.Join(originalsDir, "NewFiles", "*.tar"),
+		filepath.Join(originalsDir, "NewFiles", "*.tar.gz"),
+		filepath.Join(originalsDir, "NewFiles", "*SUPP*.ZIP"),
+	}
+	
+	for _, pattern := range patterns {
+		matches, _ := filepath.Glob(pattern)
+		for _, match := range matches {
+			// Process all archives - no filtering
+			if !e.isProcessed(match) {
+				archives = append(archives, match)
+			}
+		}
+	}
+	
+	log.Printf("Found %d unprocessed archives", len(archives))
+	return archives
+}
+
+func (e *Extractor) extractFromZIP(archivePath string) ([]Patent, error) {
+	r, err := zip.OpenReader(archivePath)
+	if err != nil {
+		return nil, err
+	}
+	defer r.Close()
+	
+	var patents []Patent
+	xmlCount := 0
+	nestedZips := 0
+	
+	// First pass: check for nested ZIPs (older format 2001-2010)
+	hasNestedZips := false
+	for _, f := range r.File {
+		if strings.HasSuffix(strings.ToUpper(f.Name), ".ZIP") {
+			hasNestedZips = true
+			break
+		}
+	}
+	
+	if hasNestedZips {
+		// Process nested ZIPs (2001-2010 format)
+		for _, f := range r.File {
+			if !strings.HasSuffix(strings.ToUpper(f.Name), ".ZIP") {
+				continue
+			}
+			
+			// Skip DTDS and ENTITIES zips
+			if strings.Contains(f.Name, "DTDS") || strings.Contains(f.Name, "ENTITIES") {
+				continue
+			}
+			
+			nestedZips++
+			
+			// Extract nested ZIP to memory
+			rc, err := f.Open()
+			if err != nil {
+				continue
+			}
+			
+			data, err := ioutil.ReadAll(rc)
+			rc.Close()
+			if err != nil {
+				continue
+			}
+			
+			// Open nested ZIP from memory
+			zr, err := zip.NewReader(bytes.NewReader(data), int64(len(data)))
+			if err != nil {
+				continue
+			}
+			
+			// Process XML files in nested ZIP
+			for _, nf := range zr.File {
+				if !strings.HasSuffix(strings.ToUpper(nf.Name), ".XML") {
+					continue
+				}
+				
+				xmlCount++
+				
+				nrc, err := nf.Open()
+				if err != nil {
+					continue
+				}
+				
+				xmlData, err := ioutil.ReadAll(nrc)
+				nrc.Close()
+				if err != nil {
+					continue
+				}
+				
+				patent := e.parseXML(xmlData, nf.Name)
+				if patent != nil {
+					patents = append(patents, *patent)
+				}
+			}
+		}
+		
+		log.Printf("Processed %d nested ZIPs with %d XML files in %s", 
+			nestedZips, xmlCount, filepath.Base(archivePath))
+	} else {
+		// Process direct XML files (2011+ format)
+		for _, f := range r.File {
+			if !strings.HasSuffix(strings.ToUpper(f.Name), ".XML") {
+				continue
+			}
+			
+			xmlCount++
+			
+			rc, err := f.Open()
+			if err != nil {
+				log.Printf("Error opening %s: %v", f.Name, err)
+				continue
+			}
+			
+			data, err := ioutil.ReadAll(rc)
+			rc.Close()
+			
+			if err != nil {
+				log.Printf("Error reading %s: %v", f.Name, err)
+				continue
+			}
+			
+			patent := e.parseXML(data, f.Name)
+			if patent != nil {
+				patents = append(patents, *patent)
+			}
+		}
+		
+		log.Printf("Extracted %d patents from %d XML files in %s", 
+			len(patents), xmlCount, filepath.Base(archivePath))
+	}
+	
+	return patents, nil
+}
+
+func (e *Extractor) extractFromTAR(archivePath string) ([]Patent, error) {
+	file, err := os.Open(archivePath)
+	if err != nil {
+		return nil, err
+	}
+	defer file.Close()
+	
+	var tarReader *tar.Reader
+	
+	// Check if gzipped
+	if strings.HasSuffix(archivePath, ".tar.gz") || strings.HasSuffix(archivePath, ".tgz") {
+		gzr, err := gzip.NewReader(file)
+		if err != nil {
+			return nil, err
+		}
+		defer gzr.Close()
+		tarReader = tar.NewReader(gzr)
+	} else {
+		tarReader = tar.NewReader(file)
+	}
+	
+	var patents []Patent
+	xmlCount := 0
+	
+	for {
+		header, err := tarReader.Next()
+		if err == io.EOF {
+			break
+		}
+		if err != nil {
+			return nil, err
+		}
+		
+		if !strings.HasSuffix(strings.ToUpper(header.Name), ".XML") {
+			continue
+		}
+		
+		xmlCount++
+		
+		data, err := ioutil.ReadAll(tarReader)
+		if err != nil {
+			log.Printf("Error reading %s: %v", header.Name, err)
+			continue
+		}
+		
+		patent := e.parseXML(data, header.Name)
+		if patent != nil {
+			patents = append(patents, *patent)
+		}
+	}
+	
+	log.Printf("Extracted %d patents from %d XML files in %s",
+		len(patents), xmlCount, filepath.Base(archivePath))
+	
+	return patents, nil
+}
+
+func (e *Extractor) parseXML(data []byte, xmlPath string) *Patent {
+	// Try to extract patent number from filename first
+	pubNumber := ""
+	if match := regexp.MustCompile(`US(\d+)`).FindStringSubmatch(xmlPath); len(match) > 1 {
+		pubNumber = match[1]
+	}
+	
+	// Basic XML structure for patent
+	var doc struct {
+		XMLName xml.Name
+		Title   string `xml:"invention-title"`
+		Abstract struct {
+			Text string `xml:",innerxml"`
+		} `xml:"abstract"`
+		Claims struct {
+			Claim []struct {
+				Text string `xml:",innerxml"`
+			} `xml:"claim"`
+		} `xml:"claims"`
+		Description struct {
+			Text string `xml:",innerxml"`
+		} `xml:"description"`
+		PublicationReference struct {
+			DocumentID struct {
+				DocNumber string `xml:"doc-number"`
+				Date      string `xml:"date"`
+			} `xml:"document-id"`
+		} `xml:"publication-reference"`
+		ApplicationReference struct {
+			DocumentID struct {
+				Date string `xml:"date"`
+			} `xml:"document-id"`
+		} `xml:"application-reference"`
+		Inventors struct {
+			Inventor []struct {
+				Name struct {
+					GivenName  string `xml:"given-name"`
+					FamilyName string `xml:"family-name"`
+				} `xml:"name"`
+				Address struct {
+					City    string `xml:"city"`
+					Country string `xml:"country"`
+				} `xml:"address"`
+			} `xml:"inventor"`
+		} `xml:"inventors"`
+		Assignees struct {
+			Assignee []struct {
+				OrgName string `xml:"orgname"`
+				Name    struct {
+					GivenName  string `xml:"given-name"`
+					FamilyName string `xml:"family-name"`
+				} `xml:"name"`
+				Address struct {
+					City    string `xml:"city"`
+					Country string `xml:"country"`
+				} `xml:"address"`
+			} `xml:"assignee"`
+		} `xml:"assignees"`
+	}
+	
+	if err := xml.Unmarshal(data, &doc); err != nil {
+		// Try alternate structure
+		return e.parseAlternateXML(data, xmlPath)
+	}
+	
+	patent := &Patent{
+		RawXMLPath: xmlPath,
+	}
+	
+	// Extract patent number
+	if doc.PublicationReference.DocumentID.DocNumber != "" {
+		patent.PubNumber = doc.PublicationReference.DocumentID.DocNumber
+	} else if pubNumber != "" {
+		patent.PubNumber = pubNumber
+	} else {
+		return nil // No patent number, skip
+	}
+	
+	// Extract title
+	patent.Title = strings.TrimSpace(doc.Title)
+	if len(patent.Title) > 500 {
+		patent.Title = patent.Title[:500]
+	}
+	
+	// Extract abstract
+	patent.AbstractText = cleanXMLText(doc.Abstract.Text)
+	if len(patent.AbstractText) > 5000 {
+		patent.AbstractText = patent.AbstractText[:5000]
+	}
+	
+	// Extract claims
+	for _, claim := range doc.Claims.Claim {
+		claimText := cleanXMLText(claim.Text)
+		if claimText != "" {
+			patent.Claims = append(patent.Claims, claimText)
+		}
+	}
+	
+	// Build description with claims
+	description := ""
+	if len(patent.Claims) > 0 {
+		description = "CLAIMS:\n"
+		for i, claim := range patent.Claims {
+			if i >= 10 { // Limit to first 10 claims
+				break
+			}
+			description += fmt.Sprintf("%s\n\n", claim)
+		}
+	}
+	
+	descText := cleanXMLText(doc.Description.Text)
+	if descText != "" {
+		if description != "" {
+			description += "DESCRIPTION:\n"
+		}
+		description += descText
+	}
+	
+	if len(description) > 150000 {
+		description = description[:150000]
+	}
+	patent.DescriptionText = description
+	
+	// Parse dates
+	if doc.PublicationReference.DocumentID.Date != "" {
+		if t, err := parseDate(doc.PublicationReference.DocumentID.Date); err == nil {
+			patent.PubDate = &t
+			patent.Year = t.Year()
+		}
+	}
+	
+	if doc.ApplicationReference.DocumentID.Date != "" {
+		if t, err := parseDate(doc.ApplicationReference.DocumentID.Date); err == nil {
+			patent.FilingDate = &t
+		}
+	}
+	
+	// Extract inventors
+	var inventors []Inventor
+	for _, inv := range doc.Inventors.Inventor {
+		inventor := Inventor{
+			Type: "individual",
+		}
+		
+		if inv.Name.GivenName != "" && inv.Name.FamilyName != "" {
+			inventor.Name = fmt.Sprintf("%s %s", inv.Name.GivenName, inv.Name.FamilyName)
+		}
+		
+		if inventor.Name != "" {
+			if inv.Address.City != "" || inv.Address.Country != "" {
+				inventor.Address = map[string]string{
+					"city":    inv.Address.City,
+					"country": inv.Address.Country,
+				}
+			}
+			inventors = append(inventors, inventor)
+		}
+	}
+	
+	if len(inventors) > 0 {
+		if data, err := json.Marshal(inventors); err == nil {
+			patent.Inventors = json.RawMessage(data)
+		}
+	}
+	
+	// Extract assignees
+	var assignees []Assignee
+	for _, ass := range doc.Assignees.Assignee {
+		assignee := Assignee{}
+		
+		if ass.OrgName != "" {
+			assignee.Name = ass.OrgName
+			assignee.Type = "organization"
+		} else if ass.Name.GivenName != "" && ass.Name.FamilyName != "" {
+			assignee.Name = fmt.Sprintf("%s %s", ass.Name.GivenName, ass.Name.FamilyName)
+			assignee.Type = "individual"
+		}
+		
+		if assignee.Name != "" {
+			if ass.Address.City != "" || ass.Address.Country != "" {
+				assignee.Address = map[string]string{
+					"city":    ass.Address.City,
+					"country": ass.Address.Country,
+				}
+			}
+			assignees = append(assignees, assignee)
+		}
+	}
+	
+	if len(assignees) > 0 {
+		if data, err := json.Marshal(assignees); err == nil {
+			patent.Assignees = json.RawMessage(data)
+		}
+	}
+	
+	return patent
+}
+
+func (e *Extractor) parseAlternateXML(data []byte, xmlPath string) *Patent {
+	// Simplified parsing for alternate XML structures
+	patent := &Patent{
+		RawXMLPath: xmlPath,
+	}
+	
+	// Extract patent number using regex
+	if match := regexp.MustCompile(`<doc-number>([^<]+)</doc-number>`).FindSubmatch(data); len(match) > 1 {
+		patent.PubNumber = string(match[1])
+	} else if match := regexp.MustCompile(`US(\d+)`).FindStringSubmatch(xmlPath); len(match) > 1 {
+		patent.PubNumber = match[1]
+	} else {
+		return nil
+	}
+	
+	// Extract title
+	if match := regexp.MustCompile(`<invention-title[^>]*>([^<]+)</invention-title>`).FindSubmatch(data); len(match) > 1 {
+		patent.Title = cleanXMLText(string(match[1]))
+		if len(patent.Title) > 500 {
+			patent.Title = patent.Title[:500]
+		}
+	}
+	
+	// Extract abstract
+	if match := regexp.MustCompile(`<abstract[^>]*>(.*?)</abstract>`).FindSubmatch(data); len(match) > 1 {
+		patent.AbstractText = cleanXMLText(string(match[1]))
+		if len(patent.AbstractText) > 5000 {
+			patent.AbstractText = patent.AbstractText[:5000]
+		}
+	}
+	
+	// Extract year from patent number or date
+	if match := regexp.MustCompile(`(20\d{2})`).FindStringSubmatch(patent.PubNumber); len(match) > 1 {
+		yearStr := match[1]
+		if year, err := strconv.Atoi(yearStr); err == nil {
+			if year >= 2000 && year <= 2030 {
+				patent.Year = year
+			}
+		}
+	}
+	
+	return patent
+}
+
+func (e *Extractor) insertPatents(patents []Patent) int {
+	if len(patents) == 0 {
+		return 0
+	}
+	
+	tx, err := e.db.Begin()
+	if err != nil {
+		log.Printf("Error starting transaction: %v", err)
+		return 0
+	}
+	defer tx.Rollback()
+	
+		stmt, err := tx.Prepare(`
+			INSERT INTO patent_data_unified (
+				pub_number, title, abstract_text, description_text,
+				claims_text, description_body,
+				filing_date, pub_date, inventors, assignees,
+				raw_xml_path, year
+			) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9::jsonb, $10::jsonb, $11, $12)
+			ON CONFLICT (pub_number) DO UPDATE SET
+				title = EXCLUDED.title,
+				abstract_text = EXCLUDED.abstract_text,
+				description_text = EXCLUDED.description_text,
+				claims_text = EXCLUDED.claims_text,
+				description_body = EXCLUDED.description_body,
+				inventors = EXCLUDED.inventors,
+				assignees = EXCLUDED.assignees,
+				raw_xml_path = EXCLUDED.raw_xml_path
+			`)
+	if err != nil {
+		log.Printf("Error preparing statement: %v", err)
+		return 0
+	}
+	defer stmt.Close()
+	
+	inserted := 0
+	for _, patent := range patents {
+		// Convert JSON fields to proper format or NULL
+		var inventorsJSON interface{}
+		var assigneesJSON interface{}
+		
+		if patent.Inventors != nil && len(patent.Inventors) > 0 {
+			inventorsJSON = string(patent.Inventors)
+		} else {
+			inventorsJSON = nil
+		}
+		
+		if patent.Assignees != nil && len(patent.Assignees) > 0 {
+			assigneesJSON = string(patent.Assignees)
+		} else {
+			assigneesJSON = nil
+		}
+		
+			// Derive claims_text and description_body
+			claimsText := ""
+			descriptionBody := patent.DescriptionText
+			if len(patent.Claims) > 0 {
+				maxClaims := len(patent.Claims)
+				if maxClaims > 10 { maxClaims = 10 }
+				var sb strings.Builder
+				for i := 0; i < maxClaims; i++ {
+					ct := strings.TrimSpace(patent.Claims[i])
+					if ct == "" { continue }
+					if sb.Len() > 0 { sb.WriteString("\n\n") }
+					sb.WriteString(ct)
+				}
+				claimsText = sb.String()
+			} else if strings.HasPrefix(patent.DescriptionText, "CLAIMS:") {
+				marker := "\n\nDESCRIPTION:"
+				if idx := strings.Index(patent.DescriptionText, marker); idx > 0 {
+					claimsText = strings.TrimSpace(patent.DescriptionText[len("CLAIMS:"):idx])
+					descriptionBody = patent.DescriptionText[idx+len(marker):]
+				} else {
+					claimsText = strings.TrimSpace(patent.DescriptionText[len("CLAIMS:"):])
+				}
+			}
+
+			_, err := stmt.Exec(
+				patent.PubNumber,
+				patent.Title,
+				patent.AbstractText,
+				patent.DescriptionText,
+				claimsText,
+				descriptionBody,
+				patent.FilingDate,
+				patent.PubDate,
+				inventorsJSON,
+				assigneesJSON,
+				patent.RawXMLPath,
+				patent.Year,
+			)
+		if err != nil {
+			log.Printf("Error inserting patent %s: %v", patent.PubNumber, err)
+			// Don't fail the whole batch for one error
+			continue
+		}
+		inserted++
+	}
+	
+	if err := tx.Commit(); err != nil {
+		log.Printf("Error committing transaction: %v", err)
+		return 0
+	}
+	
+	log.Printf("Successfully inserted %d out of %d patents", inserted, len(patents))
+	return inserted
+}
+
+func (e *Extractor) worker(id int) {
+	defer e.wg.Done()
+	
+	for archivePath := range e.workChan {
+		log.Printf("Worker %d processing: %s", id, filepath.Base(archivePath))
+		
+		var patents []Patent
+		var err error
+		
+		if strings.HasSuffix(strings.ToLower(archivePath), ".zip") {
+			patents, err = e.extractFromZIP(archivePath)
+		} else if strings.Contains(strings.ToLower(archivePath), ".tar") {
+			patents, err = e.extractFromTAR(archivePath)
+		}
+		
+		if err != nil {
+			log.Printf("Worker %d error processing %s: %v", id, filepath.Base(archivePath), err)
+			atomic.AddInt64(&e.stats.Errors, 1)
+		} else {
+			atomic.AddInt64(&e.stats.PatentsExtracted, int64(len(patents)))
+			
+			if len(patents) > 0 {
+				e.resultChan <- patents
+			}
+		}
+		
+		e.markProcessed(archivePath)
+        e.moveToOriginals(archivePath)
+		atomic.AddInt64(&e.stats.ArchivesProcessed, 1)
+	}
+}
+
+func (e *Extractor) inserter() {
+	for patents := range e.resultChan {
+		inserted := e.insertPatents(patents)
+		atomic.AddInt64(&e.stats.PatentsInserted, int64(inserted))
+	}
+}
+
+func (e *Extractor) Run() {
+	archives := e.getArchives()
+	
+	// Get initial patent count
+	var initialCount int64
+	e.db.QueryRow("SELECT COUNT(*) FROM patent_data_unified").Scan(&initialCount)
+	log.Printf("Starting extraction. Current patents: %d", initialCount)
+	
+	// Start workers
+	for i := 0; i < maxWorkers; i++ {
+		e.wg.Add(1)
+		go e.worker(i)
+	}
+	
+	// Start inserter
+	go e.inserter()
+	
+	// Send work to workers
+	go func() {
+		for _, archive := range archives {
+			e.workChan <- archive
+		}
+		close(e.workChan)
+	}()
+	
+	// Monitor progress
+	ticker := time.NewTicker(30 * time.Second)
+	go func() {
+		for range ticker.C {
+			e.printStats()
+			
+			// Show current database count
+			var count int64
+			e.db.QueryRow("SELECT COUNT(*) FROM patent_data_unified").Scan(&count)
+			log.Printf("Current total patents in database: %d", count)
+		}
+	}()
+	
+	// Wait for workers to finish
+	e.wg.Wait()
+	close(e.resultChan)
+	
+	// Final stats
+	var finalCount int64
+	e.db.QueryRow("SELECT COUNT(*) FROM patent_data_unified").Scan(&finalCount)
+	
+	log.Printf("\nExtraction Complete!")
+	log.Printf("Initial patents: %d", initialCount)
+	log.Printf("Final patents: %d", finalCount)
+	log.Printf("Patents added: %d", finalCount-initialCount)
+	
+	e.printStats()
+}
+
+func (e *Extractor) printStats() {
+	elapsed := time.Since(e.stats.StartTime)
+	
+	log.Printf("========== STATISTICS ==========")
+	log.Printf("Archives processed: %d", atomic.LoadInt64(&e.stats.ArchivesProcessed))
+	log.Printf("Patents extracted: %d", atomic.LoadInt64(&e.stats.PatentsExtracted))
+	log.Printf("Patents inserted: %d", atomic.LoadInt64(&e.stats.PatentsInserted))
+	log.Printf("Errors: %d", atomic.LoadInt64(&e.stats.Errors))
+	log.Printf("Time elapsed: %.2f hours", elapsed.Hours())
+	log.Printf("Rate: %.0f patents/hour", float64(atomic.LoadInt64(&e.stats.PatentsExtracted))/elapsed.Hours())
+	log.Printf("================================")
+}
+
+func cleanXMLText(s string) string {
+	// Remove XML tags
+	re := regexp.MustCompile(`<[^>]+>`)
+	s = re.ReplaceAllString(s, " ")
+	
+	// Clean whitespace
+	s = strings.TrimSpace(s)
+	s = regexp.MustCompile(`\s+`).ReplaceAllString(s, " ")
+	
+	return s
+}
+
+func parseDate(dateStr string) (time.Time, error) {
+	dateStr = strings.TrimSpace(dateStr)
+	
+	// Try different date formats
+	formats := []string{
+		"20060102",
+		"2006-01-02",
+		"01/02/2006",
+		"2006",
+	}
+	
+	for _, format := range formats {
+		if t, err := time.Parse(format, dateStr); err == nil {
+			return t, nil
+		}
+	}
+	
+	return time.Time{}, fmt.Errorf("unable to parse date: %s", dateStr)
+}
+
+func main() {
+	runtime.GOMAXPROCS(runtime.NumCPU())
+	
+	log.SetOutput(os.Stdout)
+	log.Printf("Patent Extractor starting with %d workers", maxWorkers)
+	
+	extractor, err := NewExtractor()
+	if err != nil {
+		log.Fatalf("Failed to create extractor: %v", err)
+	}
+	defer extractor.db.Close()
+	
+	extractor.Run()
+}
+func (e *Extractor) moveToOriginals(archivePath string) {
+    base := filepath.Base(archivePath)
+    dest := filepath.Join(originalsDir, base)
+    if _, err := os.Stat(dest); err == nil {
+        dest = filepath.Join(originalsDir, fmt.Sprintf("%s.%d", base, time.Now().Unix()))
+    }
+    if err := os.Rename(archivePath, dest); err != nil {
+        log.Printf("Failed to move %s to originals: %v", archivePath, err)
+        return
+    }
+    log.Printf("Moved %s back to originals: %s", filepath.Base(archivePath), dest)
+}

@@ -1,0 +1,550 @@
+package main
+
+import (
+	"archive/tar"
+	"archive/zip"
+	"bytes"
+	"compress/gzip"
+	"database/sql"
+	"fmt"
+	"io"
+	"io/ioutil"
+	"log"
+	"os"
+	"path/filepath"
+	"regexp"
+	"runtime"
+	"strconv"
+	"strings"
+	"sync"
+	"sync/atomic"
+	"time"
+
+	_ "github.com/lib/pq"
+)
+
+type Config struct {
+	DBHost     string
+	DBPort     int
+	DBName     string
+	DBUser     string
+	DBPassword string
+
+	WorkDir      string
+	LogDir       string
+	FilesRoot    string
+	ProcessedLog string
+
+	Workers          int
+	BatchSize        int
+	ScanNewOnly      bool
+	Recursive        bool
+	MinArchiveSizeMB int64
+	ReprocessAll     bool
+
+    PriorityMinYear int
+    PriorityMaxYear int
+}
+
+var cfg = Config{
+	DBHost:     "localhost",
+	DBPort:     5432,
+	DBName:     "companies_db",
+	DBUser:     "postgres",
+	DBPassword: "qwklmn711",
+
+	WorkDir:      "/home/mark/projects/patent_extractor/temp",
+	LogDir:       "/home/mark/projects/patent_extractor/logs",
+	FilesRoot:    "/mnt/patents/originals",
+	ProcessedLog: "/home/mark/projects/patent_extractor/processed_archives_backfill.txt",
+
+	Workers:          16,
+	BatchSize:        2000,
+	ScanNewOnly:      false,
+	Recursive:        true,
+	MinArchiveSizeMB: 1,
+	ReprocessAll:     true, // We want to reprocess everything to fix paths
+}
+
+type Stats struct {
+	ArchivesProcessed int64
+	PatentsUpdated    int64
+	Errors            int64
+	StartTime         time.Time
+}
+
+type PatentBackfill struct {
+	PubNumber         string
+	ApplicationNumber string
+	RawXMLPath        string
+}
+
+type Extractor struct {
+	db                *sql.DB
+	processedArchives map[string]bool
+	mu                sync.RWMutex
+	stats             *Stats
+	workChan          chan string
+	resultChan        chan []PatentBackfill
+	wg                sync.WaitGroup
+	insWG             sync.WaitGroup
+}
+
+func getEnv(key, def string) string {
+	if v := strings.TrimSpace(os.Getenv(key)); v != "" {
+		return v
+	}
+	return def
+}
+
+func getEnvInt(key string, def int) int {
+	if v := strings.TrimSpace(os.Getenv(key)); v != "" {
+		if n, err := strconv.Atoi(v); err == nil {
+			return n
+		}
+	}
+	return def
+}
+
+func getEnvBool(key string, def bool) bool {
+	if v := strings.TrimSpace(os.Getenv(key)); v != "" {
+		v = strings.ToLower(v)
+		return v == "1" || v == "true" || v == "yes"
+	}
+	return def
+}
+
+func NewExtractor() (*Extractor, error) {
+	cfg.DBHost = getEnv("DB_HOST", cfg.DBHost)
+	cfg.DBPort = getEnvInt("DB_PORT", cfg.DBPort)
+	cfg.DBName = getEnv("DB_NAME", cfg.DBName)
+	cfg.DBUser = getEnv("DB_USER", cfg.DBUser)
+	cfg.DBPassword = getEnv("DB_PASSWORD", cfg.DBPassword)
+
+	cfg.Workers = getEnvInt("WORKERS", cfg.Workers)
+	cfg.BatchSize = getEnvInt("BATCH_SIZE", cfg.BatchSize)
+	cfg.FilesRoot = getEnv("FILES_ROOT", cfg.FilesRoot)
+    cfg.ReprocessAll = getEnvBool("REPROCESS_ALL", cfg.ReprocessAll)
+
+	psqlInfo := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable",
+		cfg.DBHost, cfg.DBPort, cfg.DBUser, cfg.DBPassword, cfg.DBName)
+
+	db, err := sql.Open("postgres", psqlInfo)
+	if err != nil {
+		return nil, err
+	}
+
+	if err = db.Ping(); err != nil {
+		return nil, err
+	}
+
+	db.SetMaxOpenConns(25)
+	db.SetMaxIdleConns(5)
+
+	e := &Extractor{
+		db:                db,
+		processedArchives: make(map[string]bool),
+		stats:             &Stats{StartTime: time.Now()},
+		workChan:          make(chan string, 100),
+		resultChan:        make(chan []PatentBackfill, 100),
+	}
+
+	e.loadProcessedArchives()
+
+	return e, nil
+}
+
+func (e *Extractor) loadProcessedArchives() {
+	data, err := ioutil.ReadFile(cfg.ProcessedLog)
+	if err != nil {
+		return
+	}
+	lines := strings.Split(string(data), "\n")
+	e.mu.Lock()
+	defer e.mu.Unlock()
+	for _, line := range lines {
+		if strings.TrimSpace(line) != "" {
+			e.processedArchives[strings.TrimSpace(line)] = true
+		}
+	}
+}
+
+func (e *Extractor) isProcessed(path string) bool {
+	e.mu.RLock()
+	defer e.mu.RUnlock()
+	return e.processedArchives[path]
+}
+
+func (e *Extractor) markProcessed(path string) {
+	e.mu.Lock()
+	defer e.mu.Unlock()
+	e.processedArchives[path] = true
+
+	f, err := os.OpenFile(cfg.ProcessedLog, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+	if err != nil {
+		log.Printf("Error writing to processed log: %v", err)
+		return
+	}
+	defer f.Close()
+	if _, err := f.WriteString(path + "\n"); err != nil {
+		log.Printf("Error writing to processed log: %v", err)
+	}
+}
+
+func sniffZip(path string) bool {
+	f, err := os.Open(path)
+	if err != nil {
+		return false
+	}
+	defer f.Close()
+	buf := make([]byte, 4)
+	if _, err := f.Read(buf); err != nil {
+		return false
+	}
+	return bytes.Equal(buf, []byte{0x50, 0x4b, 0x03, 0x04})
+}
+
+func sniffTar(path string) bool {
+	return strings.HasSuffix(path, ".tar") || strings.HasSuffix(path, ".tar.gz") || strings.HasSuffix(path, ".tgz")
+}
+
+func (e *Extractor) parseBackfillXML(data []byte, xmlPath string, archiveName string) *PatentBackfill {
+    // Minimal regex parsing for speed
+    
+    // 1. Find Pub Number
+    pubNum := ""
+    if match := regexp.MustCompile(`<doc-number>([^<]+)</doc-number>`).FindSubmatch(data); len(match) > 1 {
+        pubNum = strings.TrimSpace(string(match[1]))
+    } else if match := regexp.MustCompile(`US(\d+)`).FindStringSubmatch(xmlPath); len(match) > 1 {
+        pubNum = match[1]
+    } else {
+        return nil
+    }
+    
+    // 2. Find App Number
+    appNum := ""
+    // Pattern: <application-reference> ... <doc-number>12/345,678</doc-number>
+    // We try to be specific to the application reference block to avoid confusion with priority claims
+    appRefBlock := regexp.MustCompile(`(?is)<application-reference[^>]*>(.*?)</application-reference>`).FindSubmatch(data)
+    
+    if len(appRefBlock) > 1 {
+        if match := regexp.MustCompile(`(?is)<doc-number[^>]*>([^<]+)</doc-number>`).FindSubmatch(appRefBlock[1]); len(match) > 1 {
+            raw := string(match[1])
+            // Normalize: keep only digits
+            appNum = strings.Map(func(r rune) rune {
+                if r >= '0' && r <= '9' { return r }
+                return -1
+            }, raw)
+        }
+    }
+    
+    // Path standardizing: ArchiveName/PathInside
+    cleanPath := fmt.Sprintf("%s/%s", archiveName, xmlPath)
+
+    if appNum == "" {
+        // Even if appNum is missing, we might want to fix the path?
+        // But if we don't have appNum, the main goal fails.
+        // Let's return it anyway, but with empty appNum.
+        // However, SQL update logic needs to be careful.
+        // For now, let's only return valid ones to be safe.
+        return nil 
+    }
+    
+    return &PatentBackfill{
+        PubNumber:         pubNum,
+        ApplicationNumber: appNum,
+        RawXMLPath:        cleanPath,
+    }
+}
+
+func (e *Extractor) extractFromZIP(archivePath string) ([]PatentBackfill, error) {
+    r, err := zip.OpenReader(archivePath)
+    if err != nil {
+        return nil, err
+    }
+    defer r.Close()
+
+    var results []PatentBackfill
+    archiveName := filepath.Base(archivePath)
+
+    // Handle nested ZIPs (2001-2010) logic
+    hasNestedZips := false
+    for _, f := range r.File {
+        if strings.HasSuffix(strings.ToUpper(f.Name), ".ZIP") {
+            hasNestedZips = true
+            break
+        }
+    }
+
+    if hasNestedZips {
+        for _, f := range r.File {
+             if !strings.HasSuffix(strings.ToUpper(f.Name), ".ZIP") || strings.Contains(f.Name, "DTDS") || strings.Contains(f.Name, "ENTITIES") {
+                 continue
+             }
+             
+             rc, err := f.Open()
+             if err != nil { continue }
+             data, err := ioutil.ReadAll(rc)
+             rc.Close()
+             if err != nil { continue }
+             
+             zr, err := zip.NewReader(bytes.NewReader(data), int64(len(data)))
+             if err != nil { continue }
+             
+             for _, nf := range zr.File {
+                 if !strings.HasSuffix(strings.ToUpper(nf.Name), ".XML") { continue }
+                 nrc, err := nf.Open()
+                 if err != nil { continue }
+                 xdata, err := ioutil.ReadAll(nrc)
+                 nrc.Close()
+                 if err != nil { continue }
+                 
+                 pb := e.parseBackfillXML(xdata, nf.Name, archiveName)
+                 if pb != nil { results = append(results, *pb) }
+             }
+        }
+    } else {
+        for _, f := range r.File {
+            if !strings.HasSuffix(strings.ToUpper(f.Name), ".XML") { continue }
+            rc, err := f.Open()
+            if err != nil { continue }
+            data, err := ioutil.ReadAll(rc)
+            rc.Close()
+            if err != nil { continue }
+            
+            pb := e.parseBackfillXML(data, f.Name, archiveName)
+            if pb != nil { results = append(results, *pb) }
+        }
+    }
+    return results, nil
+}
+
+func (e *Extractor) extractFromTAR(archivePath string) ([]PatentBackfill, error) {
+    file, err := os.Open(archivePath)
+    if err != nil {
+        return nil, err
+    }
+    defer file.Close()
+    
+    var tr *tar.Reader
+    if strings.HasSuffix(archivePath, ".tar.gz") || strings.HasSuffix(archivePath, ".tgz") {
+        gzr, err := gzip.NewReader(file)
+        if err != nil { return nil, err }
+        defer gzr.Close()
+        tr = tar.NewReader(gzr)
+    } else {
+        tr = tar.NewReader(file)
+    }
+    
+    var results []PatentBackfill
+    archiveName := filepath.Base(archivePath)
+    
+    for {
+        header, err := tr.Next()
+        if err == io.EOF { break }
+        if err != nil { return nil, err }
+        
+        upper := strings.ToUpper(header.Name)
+        if strings.HasSuffix(upper, ".XML") {
+            data, err := ioutil.ReadAll(tr)
+            if err != nil { continue }
+            pb := e.parseBackfillXML(data, header.Name, archiveName)
+            if pb != nil { results = append(results, *pb) }
+        } else if strings.HasSuffix(upper, ".ZIP") {
+            zdata, err := ioutil.ReadAll(tr)
+            if err != nil { continue }
+            zr, err := zip.NewReader(bytes.NewReader(zdata), int64(len(zdata)))
+            if err != nil { continue }
+            for _, zf := range zr.File {
+                if !strings.HasSuffix(strings.ToUpper(zf.Name), ".XML") { continue }
+                rc, err := zf.Open()
+                if err != nil { continue }
+                xdata, err := ioutil.ReadAll(rc)
+                rc.Close()
+                if err != nil { continue }
+                pb := e.parseBackfillXML(xdata, zf.Name, archiveName)
+                if pb != nil { results = append(results, *pb) }
+            }
+        }
+    }
+    return results, nil
+}
+
+func (e *Extractor) produceArchives() {
+    scanCount := 0
+    
+    // Sort buffer for streaming? No, simple stream.
+    // If we wanted sort, we'd have to buffer.
+    // For backfill, order doesn't matter.
+    
+    walkFn := func(path string, d os.DirEntry, err error) error {
+        if err != nil { return nil }
+        
+        scanCount++
+        if scanCount % 5000 == 0 {
+            log.Printf("Scanning active... checked %d items", scanCount)
+        }
+        
+        if d.IsDir() { return nil }
+        
+        // Check candidates
+        name := d.Name()
+        lower := strings.ToLower(name)
+        isArchive := strings.HasSuffix(lower, ".zip") || strings.HasSuffix(lower, ".tar") || strings.HasSuffix(lower, ".tgz") || strings.HasSuffix(lower, ".tar.gz")
+        
+        // Also check large files without extension
+        if !isArchive && filepath.Ext(name) == "" {
+             info, err := d.Info()
+             if err == nil && info.Size() > 1024*1024 {
+                 isArchive = sniffZip(path) || sniffTar(path)
+             }
+        }
+
+        if isArchive {
+            // We removed the "isProcessed" check if ReprocessAll is true?
+            // Yes, but to ensure we hit everything for the path fix, we should skip the check logic if reprocess is on.
+            if cfg.ReprocessAll || !e.isProcessed(path) {
+                e.workChan <- path
+            }
+        }
+        return nil
+    }
+    
+    // Start walking specific years first if priority is set?
+    // For now, simple walk.
+    filepath.WalkDir(cfg.FilesRoot, walkFn)
+    
+    close(e.workChan)
+    log.Printf("Finished scanning. Total items checked: %d", scanCount)
+}
+
+func (e *Extractor) worker(id int) {
+    defer e.wg.Done()
+    for archivePath := range e.workChan {
+        // log.Printf("Worker %d backfilling: %s", id, filepath.Base(archivePath)) 
+        // Reduce logs to avoid spamming screen, maybe? 
+        // Keep it for visibility.
+        log.Printf("Worker %d processing: %s", id, filepath.Base(archivePath))
+        
+        var results []PatentBackfill
+        var err error
+        
+        lower := strings.ToLower(archivePath)
+        if strings.HasSuffix(lower, ".zip") || sniffZip(archivePath) {
+            results, err = e.extractFromZIP(archivePath)
+        } else if strings.Contains(lower, ".tar") || sniffTar(archivePath) {
+            results, err = e.extractFromTAR(archivePath)
+        }
+        
+        if err != nil {
+            log.Printf("Error processing %s: %v", filepath.Base(archivePath), err)
+            atomic.AddInt64(&e.stats.Errors, 1)
+        } else {
+            if len(results) > 0 {
+                e.resultChan <- results
+            }
+        }
+        // Only mark processed if not error? Or always?
+        // Always mark to avoid loops, unless critical failure.
+        e.markProcessed(archivePath)
+        atomic.AddInt64(&e.stats.ArchivesProcessed, 1)
+    }
+}
+
+func (e *Extractor) inserter() {
+    defer e.insWG.Done()
+    
+    batch := make([]PatentBackfill, 0, cfg.BatchSize)
+    
+    flush := func() {
+        if len(batch) == 0 { return }
+        e.updatePatents(batch)
+        batch = batch[:0]
+    }
+    
+    for results := range e.resultChan {
+        for _, pb := range results {
+            batch = append(batch, pb)
+            if len(batch) >= cfg.BatchSize {
+                flush()
+            }
+        }
+    }
+    flush()
+}
+
+func (e *Extractor) updatePatents(items []PatentBackfill) {
+    tx, err := e.db.Begin()
+    if err != nil {
+        log.Printf("Tx Error: %v", err)
+        return
+    }
+    defer tx.Rollback()
+    
+    // Update SQL: Set app number AND raw_xml_path
+    stmt, err := tx.Prepare(`
+        UPDATE patent_data_unified 
+        SET application_number = $1, raw_xml_path = $2
+        WHERE pub_number = $3
+    `)
+    if err != nil {
+        log.Printf("Prep Error: %v", err)
+        return
+    }
+    defer stmt.Close()
+    
+    updated := 0
+    for _, item := range items {
+        if item.PubNumber == "" { continue }
+        res, err := stmt.Exec(item.ApplicationNumber, item.RawXMLPath, item.PubNumber)
+        if err == nil {
+            if rows, _ := res.RowsAffected(); rows > 0 {
+                updated++
+            }
+        }
+    }
+    
+    if err := tx.Commit(); err != nil {
+        log.Printf("Commit Error: %v", err)
+        return
+    }
+    
+    if updated > 0 {
+        atomic.AddInt64(&e.stats.PatentsUpdated, int64(updated))
+        // log.Printf("Updated %d patents", updated)
+    }
+}
+
+func (e *Extractor) Run() {
+    // Start workers
+    for i := 0; i < cfg.Workers; i++ {
+        e.wg.Add(1)
+        go e.worker(i)
+    }
+    
+    // Start inserter
+    e.insWG.Add(1)
+    go e.inserter()
+    
+    // Start producer
+    go e.produceArchives()
+    
+    // Wait
+    e.wg.Wait()
+    close(e.resultChan)
+    e.insWG.Wait()
+    
+    log.Printf("Backfill Complete! Total Updates: %d", atomic.LoadInt64(&e.stats.PatentsUpdated))
+}
+
+func main() {
+    runtime.GOMAXPROCS(runtime.NumCPU())
+    log.SetOutput(os.Stdout)
+    log.Println("Starting Patent Backfill Extractor...")
+    
+    e, err := NewExtractor()
+    if err != nil {
+        log.Fatalf("Init failed: %v", err)
+    }
+    e.Run()
+}

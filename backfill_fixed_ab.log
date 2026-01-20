@@ -1,0 +1,77 @@
+Starting Patent Application Number Backfill (Targeted - Missing Only)...
+
+This processes only patents missing application numbers
+Current status: See BACKFILL_STATUS.md for latest coverage
+
+2025/11/23 06:25:16 Starting Targeted Patent Backfill (Memory-Optimized v2)...
+2025/11/23 06:25:16 Config: 8 workers, batch size 500, checkpoint every 10000 patents
+2025/11/23 06:25:16 Loading patents missing application numbers from database...
+2025/11/23 06:25:18 Queued 10000 patents for processing...
+2025/11/23 06:25:18 Queued 20000 patents for processing...
+2025/11/23 06:25:18 Queued 30000 patents for processing...
+2025/11/23 06:25:18 Finished loading 34020 patents to process
+2025/11/23 06:25:50 Updated 500 patents (Total: 500)
+2025/11/23 06:25:57 Updated 500 patents (Total: 1000)
+2025/11/23 06:25:57 Updated 500 patents (Total: 1500)
+2025/11/23 06:25:58 Updated 500 patents (Total: 2000)
+2025/11/23 06:25:58 Updated 500 patents (Total: 2500)
+2025/11/23 06:25:58 Updated 500 patents (Total: 3000)
+2025/11/23 06:26:12 Updated 500 patents (Total: 3500)
+2025/11/23 06:26:16 
+=== Progress Update ===
+2025/11/23 06:26:16 Processed: 4263 | Updated: 3500 | Success Rate: 82.1%
+2025/11/23 06:26:16 Archives: 57 loaded, 0 skipped | Errors: 0
+2025/11/23 06:26:16 Memory: Alloc=30038MB Sys=42329MB NumGC=18
+2025/11/23 06:26:16 Elapsed: 1m0.002310982s
+2025/11/23 06:26:23 Updated 500 patents (Total: 4000)
+2025/11/23 06:26:24 Updated 500 patents (Total: 4500)
+2025/11/23 06:26:24 Updated 500 patents (Total: 5000)
+2025/11/23 06:26:24 Updated 500 patents (Total: 5500)
+2025/11/23 06:26:25 Updated 500 patents (Total: 6000)
+2025/11/23 06:26:53 Updated 500 patents (Total: 6500)
+2025/11/23 06:27:01 Updated 500 patents (Total: 7000)
+2025/11/23 06:27:02 Updated 500 patents (Total: 7500)
+2025/11/23 06:27:03 Updated 500 patents (Total: 8000)
+2025/11/23 06:27:03 
+=== Progress Update ===
+2025/11/23 06:27:03 Processed: 10000 | Updated: 8000 | Success Rate: 80.0%
+2025/11/23 06:27:03 Archives: 95 loaded, 0 skipped | Errors: 0
+2025/11/23 06:27:03 Memory: Alloc=19048MB Sys=57597MB NumGC=31
+2025/11/23 06:27:03 Elapsed: 1m46.934852094s
+2025/11/23 06:27:03 Updated 500 patents (Total: 8500)
+2025/11/23 06:27:03 Updated 500 patents (Total: 9000)
+2025/11/23 06:27:15 Updated 500 patents (Total: 9500)
+2025/11/23 06:27:16 
+=== Progress Update ===
+2025/11/23 06:27:16 Processed: 10641 | Updated: 9500 | Success Rate: 89.3%
+2025/11/23 06:27:16 Archives: 102 loaded, 0 skipped | Errors: 0
+2025/11/23 06:27:16 Memory: Alloc=15978MB Sys=57597MB NumGC=35
+2025/11/23 06:27:16 Elapsed: 2m0.000340784s
+2025/11/23 06:27:35 Updated 500 patents (Total: 10000)
+2025/11/23 06:27:35 Updated 500 patents (Total: 10500)
+2025/11/23 06:27:52 Updated 500 patents (Total: 11000)
+2025/11/23 06:27:54 Updated 500 patents (Total: 11500)
+2025/11/23 06:27:54 Updated 500 patents (Total: 12000)
+2025/11/23 06:28:01 Updated 500 patents (Total: 12500)
+2025/11/23 06:28:01 Updated 500 patents (Total: 13000)
+2025/11/23 06:28:15 Updated 500 patents (Total: 13500)
+2025/11/23 06:28:16 
+=== Progress Update ===
+2025/11/23 06:28:16 Processed: 14698 | Updated: 13500 | Success Rate: 91.8%
+2025/11/23 06:28:16 Archives: 157 loaded, 38 skipped | Errors: 0
+2025/11/23 06:28:16 Memory: Alloc=24516MB Sys=57597MB NumGC=47
+2025/11/23 06:28:16 Elapsed: 3m0.000364726s
+2025/11/23 06:28:21 Updated 500 patents (Total: 14000)
+2025/11/23 06:28:22 Updated 500 patents (Total: 14500)
+2025/11/23 06:28:22 Updated 500 patents (Total: 15000)
+2025/11/23 06:28:22 Updated 500 patents (Total: 15500)
+2025/11/23 06:28:23 Updated 500 patents (Total: 16000)
+2025/11/23 06:28:23 Updated 237 patents (Total: 16237)
+2025/11/23 06:28:23 
+=== Targeted Backfill Complete ===
+2025/11/23 06:28:23 Patents Processed: 16238
+2025/11/23 06:28:23 Patents Updated: 16237
+2025/11/23 06:28:23 Archives Loaded: 162
+2025/11/23 06:28:23 Archives Skipped: 39
+2025/11/23 06:28:23 Errors: 0
+2025/11/23 06:28:23 Time Elapsed: 3m7.071633229s

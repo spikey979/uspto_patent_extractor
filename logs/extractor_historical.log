@@ -1,0 +1,17 @@
+2025/11/27 12:20:18 metadata-fill-fs starting; workers=8 scan_new=false recursive=true min_mb=1
+2025/11/27 12:20:18 roots=[/mnt/patents/data/historical]
+2025/11/27 12:20:18 Found 0 unprocessed archives under /mnt/patents/data/historical
+2025/11/27 12:20:18 Starting extraction. Current patents: 8222430
+2025/11/27 12:20:18 
+Extraction Complete!
+2025/11/27 12:20:18 Initial patents: 8222430
+2025/11/27 12:20:18 Final patents: 8222430
+2025/11/27 12:20:18 Patents added: 0
+2025/11/27 12:20:18 ========== STATISTICS ==========
+2025/11/27 12:20:18 Archives processed: 0
+2025/11/27 12:20:18 Patents extracted: 0
+2025/11/27 12:20:18 Patents inserted: 0
+2025/11/27 12:20:18 Errors: 0
+2025/11/27 12:20:18 Time elapsed: 0.00 hours
+2025/11/27 12:20:18 Rate: 0 patents/hour
+2025/11/27 12:20:18 ================================

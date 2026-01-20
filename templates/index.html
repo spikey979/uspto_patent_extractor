@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patent Search System</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Patent Search System</h1>
+        <p>Real-time Search with Accurate Relevance Scoring</p>
+    </div>
+    
+    <div class="container">
+        <div class="search-box">
+            <h2>Describe Your Invention</h2>
+            <textarea id="description" placeholder="Enter a detailed description of your invention, technology, or concept..."></textarea>
+            <button class="btn" onclick="performSearch()" id="searchBtn">Search Patents</button>
+            
+            <div class="progress-container" id="progressContainer">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill">0%</div>
+                </div>
+                <div class="progress-text" id="progressText">Initializing search...</div>
+            </div>
+        </div>
+        
+        <div class="results" id="results">
+            <h2>Search Results</h2>
+            <div class="stats" id="stats"></div>
+            <div id="resultsList"></div>
+        </div>
+    </div>
+
+    <!-- Patent Detail Modal -->
+    <div id="patentModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <div id="patentDetail" class="patent-detail"></div>
+        </div>
+    </div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
+EOF"

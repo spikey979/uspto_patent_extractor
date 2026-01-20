@@ -1,0 +1,35 @@
+Starting Targeted Backfill v2 (Memory-Optimized + A/B Archive Fix)...
+This will process approximately 53,977 remaining patents from years 2001-2004, 2010
+Memory optimizations:
+  - No archive caching (loads on-demand)
+  - Reduced workers: 8 (was 16)
+  - Smaller batch size: 500 (was 2000)
+  - Progress checkpoints every 10,000 patents
+  - Graceful shutdown on SIGINT/SIGTERM
+
+Archive handling:
+  - Tries A/B suffix variants (e.g., 20030313A.ZIP, 20030313B.ZIP)
+  - Should fix ~36,000 missing 2003 patents
+
+2025/11/22 23:01:12 Starting Targeted Patent Backfill (Memory-Optimized v2)...
+2025/11/22 23:01:12 Config: 8 workers, batch size 500, checkpoint every 10000 patents
+2025/11/22 23:01:12 Loading patents missing application numbers from database...
+2025/11/22 23:01:13 Queued 10000 patents for processing...
+2025/11/22 23:01:13 Queued 20000 patents for processing...
+2025/11/22 23:01:13 Queued 30000 patents for processing...
+2025/11/22 23:01:13 Finished loading 34054 patents to process
+2025/11/22 23:01:41 
+=== Progress Update ===
+2025/11/22 23:01:41 Processed: 10000 | Updated: 0 | Success Rate: 0.0%
+2025/11/22 23:01:41 Archives: 28 loaded, 0 skipped | Errors: 0
+2025/11/22 23:01:41 Memory: Alloc=9058MB Sys=16219MB NumGC=31
+2025/11/22 23:01:41 Elapsed: 29.718421892s
+2025/11/22 23:02:08 Updated 34 patents (Total: 34)
+2025/11/22 23:02:08 
+=== Targeted Backfill Complete ===
+2025/11/22 23:02:08 Patents Processed: 16272
+2025/11/22 23:02:08 Patents Updated: 34
+2025/11/22 23:02:08 Archives Loaded: 51
+2025/11/22 23:02:08 Archives Skipped: 39
+2025/11/22 23:02:08 Errors: 0
+2025/11/22 23:02:08 Time Elapsed: 56.008555789s

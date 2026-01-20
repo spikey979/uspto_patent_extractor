@@ -1,0 +1,1117 @@
+2025/09/04 13:10:54 Patent Extractor starting with 8 workers
+2025/09/04 13:10:54 Loaded 2414 processed archives
+2025/09/04 13:10:55 Found 141 candidate archives (reprocess_all=true)
+2025/09/04 13:10:56 Starting extraction. Current patents: 8100601
+2025/09/04 13:10:56 Worker 7 processing: I20230720.tar
+2025/09/04 13:10:56 Worker 2 processing: I20230622.tar
+2025/09/04 13:10:56 Worker 6 processing: I20230706.tar
+2025/09/04 13:10:56 Worker 3 processing: I20230629.tar
+2025/09/04 13:10:56 Worker 0 processing: I20230601.tar
+2025/09/04 13:10:56 Worker 5 processing: I20230713.tar
+2025/09/04 13:10:56 Worker 4 processing: I20230525.tar
+2025/09/04 13:10:56 Worker 1 processing: I20230615.tar
+2025/09/04 13:11:26 ========== STATISTICS ==========
+2025/09/04 13:11:26 Archives processed: 0
+2025/09/04 13:11:26 Patents extracted: 0
+2025/09/04 13:11:26 Patents inserted: 0
+2025/09/04 13:11:26 Errors: 0
+2025/09/04 13:11:26 Time elapsed: 0.01 hours
+2025/09/04 13:11:26 Rate: 0 patents/hour
+2025/09/04 13:11:26 ================================
+2025/09/04 13:11:27 Current total patents in database: 8100601
+2025/09/04 13:11:56 ========== STATISTICS ==========
+2025/09/04 13:11:56 Archives processed: 0
+2025/09/04 13:11:56 Patents extracted: 0
+2025/09/04 13:11:56 Patents inserted: 0
+2025/09/04 13:11:56 Errors: 0
+2025/09/04 13:11:56 Time elapsed: 0.02 hours
+2025/09/04 13:11:56 Rate: 0 patents/hour
+2025/09/04 13:11:56 ================================
+2025/09/04 13:11:57 Current total patents in database: 8100601
+2025/09/04 13:11:58 Extracted 7502 patents from 7502 XML files in I20230720.tar
+2025/09/04 13:11:58 Moved I20230720.tar back to originals: /mnt/patents/originals/I20230720.tar.1756984318
+2025/09/04 13:11:58 Worker 7 processing: I20230727.tar
+2025/09/04 13:12:06 Extracted 8113 patents from 8113 XML files in I20230706.tar
+2025/09/04 13:12:06 Moved I20230706.tar back to originals: /mnt/patents/originals/I20230706.tar.1756984326
+2025/09/04 13:12:06 Worker 6 processing: I20230727_r1.tar
+2025/09/04 13:12:19 Successfully inserted 7502 out of 7502 patents
+2025/09/04 13:12:26 ========== STATISTICS ==========
+2025/09/04 13:12:26 Archives processed: 2
+2025/09/04 13:12:26 Patents extracted: 15615
+2025/09/04 13:12:26 Patents inserted: 7502
+2025/09/04 13:12:26 Errors: 0
+2025/09/04 13:12:26 Time elapsed: 0.03 hours
+2025/09/04 13:12:26 Rate: 614703 patents/hour
+2025/09/04 13:12:26 ================================
+2025/09/04 13:12:27 Current total patents in database: 8100601
+2025/09/04 13:12:34 Extracted 11077 patents from 11077 XML files in I20230622.tar
+2025/09/04 13:12:34 Moved I20230622.tar back to originals: /mnt/patents/originals/I20230622.tar.1756984354
+2025/09/04 13:12:34 Worker 2 processing: I20230727_r2.tar
+2025/09/04 13:12:41 Successfully inserted 8113 out of 8113 patents
+2025/09/04 13:12:50 Extracted 7283 patents from 7283 XML files in I20230713.tar
+2025/09/04 13:12:50 Moved I20230713.tar back to originals: /mnt/patents/originals/I20230713.tar.1756984370
+2025/09/04 13:12:50 Worker 5 processing: I20230803.tar
+2025/09/04 13:12:56 ========== STATISTICS ==========
+2025/09/04 13:12:56 Archives processed: 4
+2025/09/04 13:12:56 Patents extracted: 33975
+2025/09/04 13:12:56 Patents inserted: 15615
+2025/09/04 13:12:56 Errors: 0
+2025/09/04 13:12:56 Time elapsed: 0.03 hours
+2025/09/04 13:12:56 Rate: 1007088 patents/hour
+2025/09/04 13:12:56 ================================
+2025/09/04 13:12:57 Current total patents in database: 8100601
+2025/09/04 13:12:59 Extracted 7703 patents from 7703 XML files in I20230727.tar
+2025/09/04 13:12:59 Moved I20230727.tar back to originals: /mnt/patents/originals/I20230727.tar.1756984379
+2025/09/04 13:12:59 Worker 7 processing: I20230803_r1.tar
+2025/09/04 13:13:09 Successfully inserted 11077 out of 11077 patents
+2025/09/04 13:13:26 ========== STATISTICS ==========
+2025/09/04 13:13:26 Archives processed: 5
+2025/09/04 13:13:26 Patents extracted: 41678
+2025/09/04 13:13:26 Patents inserted: 26692
+2025/09/04 13:13:26 Errors: 0
+2025/09/04 13:13:26 Time elapsed: 0.04 hours
+2025/09/04 13:13:26 Rate: 990706 patents/hour
+2025/09/04 13:13:26 ================================
+2025/09/04 13:13:26 Extracted 7061 patents from 7061 XML files in I20230601.tar
+2025/09/04 13:13:26 Moved I20230601.tar back to originals: /mnt/patents/originals/I20230601.tar.1756984406
+2025/09/04 13:13:26 Worker 0 processing: I20230803_r2.tar
+2025/09/04 13:13:31 Current total patents in database: 8100601
+2025/09/04 13:13:37 Successfully inserted 7283 out of 7283 patents
+2025/09/04 13:13:48 Extracted 8046 patents from 8046 XML files in I20230803.tar
+2025/09/04 13:13:48 Moved I20230803.tar back to originals: /mnt/patents/originals/I20230803.tar.1756984428
+2025/09/04 13:13:48 Worker 5 processing: I20230810.tar
+2025/09/04 13:13:56 ========== STATISTICS ==========
+2025/09/04 13:13:56 Archives processed: 7
+2025/09/04 13:13:56 Patents extracted: 56785
+2025/09/04 13:13:56 Patents inserted: 33975
+2025/09/04 13:13:56 Errors: 0
+2025/09/04 13:13:56 Time elapsed: 0.05 hours
+2025/09/04 13:13:56 Rate: 1126631 patents/hour
+2025/09/04 13:13:56 ================================
+2025/09/04 13:13:56 Successfully inserted 7703 out of 7703 patents
+2025/09/04 13:13:57 Current total patents in database: 8100601
+2025/09/04 13:14:09 Extracted 6471 patents from 6471 XML files in I20230727_r1.tar
+2025/09/04 13:14:09 Moved I20230727_r1.tar back to originals: /mnt/patents/originals/I20230727_r1.tar.1756984449
+2025/09/04 13:14:09 Worker 6 processing: I20230817.tar
+2025/09/04 13:14:14 Successfully inserted 7061 out of 7061 patents
+2025/09/04 13:14:18 Extracted 9392 patents from 9392 XML files in I20230615.tar
+2025/09/04 13:14:18 Moved I20230615.tar back to originals: /mnt/patents/originals/I20230615.tar.1756984458
+2025/09/04 13:14:18 Worker 1 processing: I20230824.tar
+2025/09/04 13:14:26 ========== STATISTICS ==========
+2025/09/04 13:14:26 Archives processed: 9
+2025/09/04 13:14:26 Patents extracted: 72648
+2025/09/04 13:14:26 Patents inserted: 48739
+2025/09/04 13:14:26 Errors: 0
+2025/09/04 13:14:26 Time elapsed: 0.06 hours
+2025/09/04 13:14:26 Rate: 1236863 patents/hour
+2025/09/04 13:14:26 ================================
+2025/09/04 13:14:27 Current total patents in database: 8100601
+2025/09/04 13:14:36 Successfully inserted 8046 out of 8046 patents
+2025/09/04 13:14:44 Extracted 10100 patents from 10100 XML files in I20230629.tar
+2025/09/04 13:14:44 Moved I20230629.tar back to originals: /mnt/patents/originals/I20230629.tar.1756984484
+2025/09/04 13:14:44 Worker 3 processing: I20230831.tar
+2025/09/04 13:14:44 Extracted 8209 patents from 8209 XML files in I20230525.tar
+2025/09/04 13:14:44 Moved I20230525.tar back to originals: /mnt/patents/originals/I20230525.tar.1756984484
+2025/09/04 13:14:44 Worker 4 processing: I20230907.tar
+2025/09/04 13:14:49 Extracted 7378 patents from 7378 XML files in I20230810.tar
+2025/09/04 13:14:49 Moved I20230810.tar back to originals: /mnt/patents/originals/I20230810.tar.1756984489
+2025/09/04 13:14:49 Worker 5 processing: I20230914.tar
+2025/09/04 13:14:54 Successfully inserted 6471 out of 6471 patents
+2025/09/04 13:14:56 ========== STATISTICS ==========
+2025/09/04 13:14:56 Archives processed: 12
+2025/09/04 13:14:56 Patents extracted: 98335
+2025/09/04 13:14:56 Patents inserted: 63256
+2025/09/04 13:14:56 Errors: 0
+2025/09/04 13:14:56 Time elapsed: 0.07 hours
+2025/09/04 13:14:56 Rate: 1466177 patents/hour
+2025/09/04 13:14:56 ================================
+2025/09/04 13:14:57 Current total patents in database: 8100601
+2025/09/04 13:14:58 Extracted 7703 patents from 7703 XML files in I20230727_r2.tar
+2025/09/04 13:14:58 Moved I20230727_r2.tar back to originals: /mnt/patents/originals/I20230727_r2.tar.1756984498
+2025/09/04 13:14:58 Worker 2 processing: I20230921.tar
+2025/09/04 13:15:07 Extracted 6814 patents from 6814 XML files in I20230803_r1.tar
+2025/09/04 13:15:07 Moved I20230803_r1.tar back to originals: /mnt/patents/originals/I20230803_r1.tar.1756984507
+2025/09/04 13:15:07 Worker 7 processing: I20230921_r1.tar
+2025/09/04 13:15:21 Successfully inserted 9392 out of 9392 patents
+2025/09/04 13:15:21 Extracted 8195 patents from 8195 XML files in I20230817.tar
+2025/09/04 13:15:21 Moved I20230817.tar back to originals: /mnt/patents/originals/I20230817.tar.1756984521
+2025/09/04 13:15:21 Worker 6 processing: I20230928.tar
+2025/09/04 13:15:26 ========== STATISTICS ==========
+2025/09/04 13:15:26 Archives processed: 15
+2025/09/04 13:15:26 Patents extracted: 121047
+2025/09/04 13:15:26 Patents inserted: 72648
+2025/09/04 13:15:26 Errors: 0
+2025/09/04 13:15:26 Time elapsed: 0.08 hours
+2025/09/04 13:15:26 Rate: 1605344 patents/hour
+2025/09/04 13:15:26 ================================
+2025/09/04 13:15:27 Current total patents in database: 8100601
+2025/09/04 13:15:49 Successfully inserted 10100 out of 10100 patents
+2025/09/04 13:15:56 ========== STATISTICS ==========
+2025/09/04 13:15:56 Archives processed: 15
+2025/09/04 13:15:56 Patents extracted: 121047
+2025/09/04 13:15:56 Patents inserted: 82748
+2025/09/04 13:15:56 Errors: 0
+2025/09/04 13:15:56 Time elapsed: 0.08 hours
+2025/09/04 13:15:56 Rate: 1445586 patents/hour
+2025/09/04 13:15:56 ================================
+2025/09/04 13:15:57 Current total patents in database: 8100601
+2025/09/04 13:16:00 Extracted 8046 patents from 8046 XML files in I20230803_r2.tar
+2025/09/04 13:16:00 Moved I20230803_r2.tar back to originals: /mnt/patents/originals/I20230803_r2.tar.1756984560
+2025/09/04 13:16:00 Worker 0 processing: I20231005.tar
+2025/09/04 13:16:07 Extracted 8156 patents from 8156 XML files in I20230907.tar
+2025/09/04 13:16:07 Moved I20230907.tar back to originals: /mnt/patents/originals/I20230907.tar.1756984567
+2025/09/04 13:16:07 Worker 4 processing: I20231005_r1.tar
+2025/09/04 13:16:12 Extracted 8289 patents from 8289 XML files in I20230914.tar
+2025/09/04 13:16:12 Moved I20230914.tar back to originals: /mnt/patents/originals/I20230914.tar.1756984572
+2025/09/04 13:16:12 Worker 5 processing: I20231005_r2.tar
+2025/09/04 13:16:13 Successfully inserted 8209 out of 8209 patents
+2025/09/04 13:16:26 ========== STATISTICS ==========
+2025/09/04 13:16:26 Archives processed: 18
+2025/09/04 13:16:26 Patents extracted: 145538
+2025/09/04 13:16:26 Patents inserted: 90957
+2025/09/04 13:16:26 Errors: 0
+2025/09/04 13:16:26 Time elapsed: 0.09 hours
+2025/09/04 13:16:26 Rate: 1580748 patents/hour
+2025/09/04 13:16:26 ================================
+2025/09/04 13:16:27 Current total patents in database: 8100601
+2025/09/04 13:16:33 Successfully inserted 7378 out of 7378 patents
+2025/09/04 13:16:34 Extracted 7223 patents from 7223 XML files in I20230824.tar
+2025/09/04 13:16:34 Moved I20230824.tar back to originals: /mnt/patents/originals/I20230824.tar.1756984594
+2025/09/04 13:16:34 Worker 1 processing: I20231012.tar
+2025/09/04 13:16:40 Extracted 8290 patents from 8290 XML files in I20230928.tar
+2025/09/04 13:16:40 Moved I20230928.tar back to originals: /mnt/patents/originals/I20230928.tar.1756984600
+2025/09/04 13:16:40 Worker 6 processing: I20231012_r1.tar
+2025/09/04 13:16:49 Extracted 7017 patents from 7017 XML files in I20230831.tar
+2025/09/04 13:16:49 Moved I20230831.tar back to originals: /mnt/patents/originals/I20230831.tar.1756984609
+2025/09/04 13:16:49 Worker 3 processing: I20231012_r2.tar
+2025/09/04 13:16:54 Successfully inserted 7703 out of 7703 patents
+2025/09/04 13:16:56 ========== STATISTICS ==========
+2025/09/04 13:16:56 Archives processed: 21
+2025/09/04 13:16:56 Patents extracted: 168068
+2025/09/04 13:16:56 Patents inserted: 106038
+2025/09/04 13:16:56 Errors: 0
+2025/09/04 13:16:56 Time elapsed: 0.10 hours
+2025/09/04 13:16:56 Rate: 1673946 patents/hour
+2025/09/04 13:16:56 ================================
+2025/09/04 13:16:57 Current total patents in database: 8100601
+2025/09/04 13:17:13 Successfully inserted 6814 out of 6814 patents
+2025/09/04 13:17:26 ========== STATISTICS ==========
+2025/09/04 13:17:26 Archives processed: 21
+2025/09/04 13:17:26 Patents extracted: 168068
+2025/09/04 13:17:26 Patents inserted: 112852
+2025/09/04 13:17:26 Errors: 0
+2025/09/04 13:17:26 Time elapsed: 0.11 hours
+2025/09/04 13:17:26 Rate: 1545655 patents/hour
+2025/09/04 13:17:26 ================================
+2025/09/04 13:17:33 Current total patents in database: 8100601
+2025/09/04 13:17:42 Extracted 10887 patents from 10887 XML files in I20231005.tar
+2025/09/04 13:17:42 Moved I20231005.tar back to originals: /mnt/patents/originals/I20231005.tar.1756984662
+2025/09/04 13:17:42 Worker 0 processing: I20231019.tar
+2025/09/04 13:17:45 Successfully inserted 8195 out of 8195 patents
+2025/09/04 13:17:52 Extracted 7233 patents from 7233 XML files in I20231012_r1.tar
+2025/09/04 13:17:52 Moved I20231012_r1.tar back to originals: /mnt/patents/originals/I20231012_r1.tar.1756984672
+2025/09/04 13:17:52 Worker 6 processing: I20231026.tar
+2025/09/04 13:17:55 Extracted 8899 patents from 8899 XML files in I20230921.tar
+2025/09/04 13:17:55 Moved I20230921.tar back to originals: /mnt/patents/originals/I20230921.tar.1756984675
+2025/09/04 13:17:55 Worker 2 processing: I20231102.tar
+2025/09/04 13:17:56 ========== STATISTICS ==========
+2025/09/04 13:17:56 Archives processed: 24
+2025/09/04 13:17:56 Patents extracted: 195087
+2025/09/04 13:17:56 Patents inserted: 121047
+2025/09/04 13:17:56 Errors: 0
+2025/09/04 13:17:56 Time elapsed: 0.12 hours
+2025/09/04 13:17:56 Rate: 1666425 patents/hour
+2025/09/04 13:17:56 ================================
+2025/09/04 13:17:56 Extracted 8899 patents from 8899 XML files in I20230921_r1.tar
+2025/09/04 13:17:56 Moved I20230921_r1.tar back to originals: /mnt/patents/originals/I20230921_r1.tar.1756984676
+2025/09/04 13:17:56 Worker 7 processing: I20231109.tar
+2025/09/04 13:17:57 Current total patents in database: 8100601
+2025/09/04 13:18:04 Extracted 8838 patents from 8838 XML files in I20231012.tar
+2025/09/04 13:18:04 Moved I20231012.tar back to originals: /mnt/patents/originals/I20231012.tar.1756984684
+2025/09/04 13:18:04 Worker 1 processing: I20231116.tar
+2025/09/04 13:18:11 Successfully inserted 8046 out of 8046 patents
+2025/09/04 13:18:26 ========== STATISTICS ==========
+2025/09/04 13:18:26 Archives processed: 26
+2025/09/04 13:18:26 Patents extracted: 212824
+2025/09/04 13:18:26 Patents inserted: 129093
+2025/09/04 13:18:26 Errors: 0
+2025/09/04 13:18:26 Time elapsed: 0.13 hours
+2025/09/04 13:18:26 Rate: 1697127 patents/hour
+2025/09/04 13:18:26 ================================
+2025/09/04 13:18:27 Current total patents in database: 8100601
+2025/09/04 13:18:36 Successfully inserted 8156 out of 8156 patents
+2025/09/04 13:18:53 Extracted 9084 patents from 9084 XML files in I20231005_r1.tar
+2025/09/04 13:18:53 Moved I20231005_r1.tar back to originals: /mnt/patents/originals/I20231005_r1.tar.1756984733
+2025/09/04 13:18:53 Worker 4 processing: I20231123.tar
+2025/09/04 13:18:56 ========== STATISTICS ==========
+2025/09/04 13:18:56 Archives processed: 27
+2025/09/04 13:18:56 Patents extracted: 221908
+2025/09/04 13:18:56 Patents inserted: 137249
+2025/09/04 13:18:56 Errors: 0
+2025/09/04 13:18:56 Time elapsed: 0.13 hours
+2025/09/04 13:18:56 Rate: 1659302 patents/hour
+2025/09/04 13:18:56 ================================
+2025/09/04 13:18:57 Current total patents in database: 8100601
+2025/09/04 13:19:00 Successfully inserted 8289 out of 8289 patents
+2025/09/04 13:19:22 Successfully inserted 7223 out of 7223 patents
+2025/09/04 13:19:25 Extracted 8506 patents from 8506 XML files in I20231026.tar
+2025/09/04 13:19:25 Moved I20231026.tar back to originals: /mnt/patents/originals/I20231026.tar.1756984765
+2025/09/04 13:19:25 Worker 6 processing: I20231130.tar
+2025/09/04 13:19:26 ========== STATISTICS ==========
+2025/09/04 13:19:26 Archives processed: 28
+2025/09/04 13:19:26 Patents extracted: 230414
+2025/09/04 13:19:26 Patents inserted: 152761
+2025/09/04 13:19:26 Errors: 0
+2025/09/04 13:19:26 Time elapsed: 0.14 hours
+2025/09/04 13:19:26 Rate: 1621846 patents/hour
+2025/09/04 13:19:26 ================================
+2025/09/04 13:19:27 Current total patents in database: 8100601
+2025/09/04 13:19:38 Extracted 9078 patents from 9078 XML files in I20231102.tar
+2025/09/04 13:19:38 Moved I20231102.tar back to originals: /mnt/patents/originals/I20231102.tar.1756984778
+2025/09/04 13:19:38 Worker 2 processing: I20231130_r1.tar
+2025/09/04 13:19:39 Extracted 8838 patents from 8838 XML files in I20231012_r2.tar
+2025/09/04 13:19:39 Moved I20231012_r2.tar back to originals: /mnt/patents/originals/I20231012_r2.tar.1756984779
+2025/09/04 13:19:39 Worker 3 processing: I20231207.tar
+2025/09/04 13:19:39 Extracted 10887 patents from 10887 XML files in I20231005_r2.tar
+2025/09/04 13:19:39 Moved I20231005_r2.tar back to originals: /mnt/patents/originals/I20231005_r2.tar.1756984779
+2025/09/04 13:19:39 Worker 5 processing: I20231207_r1.tar
+2025/09/04 13:19:47 Successfully inserted 8290 out of 8290 patents
+2025/09/04 13:19:56 ========== STATISTICS ==========
+2025/09/04 13:19:56 Archives processed: 31
+2025/09/04 13:19:56 Patents extracted: 259217
+2025/09/04 13:19:56 Patents inserted: 161051
+2025/09/04 13:19:56 Errors: 0
+2025/09/04 13:19:56 Time elapsed: 0.15 hours
+2025/09/04 13:19:56 Rate: 1723491 patents/hour
+2025/09/04 13:19:56 ================================
+2025/09/04 13:19:57 Current total patents in database: 8100601
+2025/09/04 13:20:10 Successfully inserted 7017 out of 7017 patents
+2025/09/04 13:20:15 Extracted 7579 patents from 7579 XML files in I20231123.tar
+2025/09/04 13:20:15 Moved I20231123.tar back to originals: /mnt/patents/originals/I20231123.tar.1756984815
+2025/09/04 13:20:15 Worker 4 processing: I20231214.tar
+2025/09/04 13:20:25 Extracted 8670 patents from 8670 XML files in I20231019.tar
+2025/09/04 13:20:25 Moved I20231019.tar back to originals: /mnt/patents/originals/I20231019.tar.1756984825
+2025/09/04 13:20:25 Worker 0 processing: I20231214_r1.tar
+2025/09/04 13:20:26 ========== STATISTICS ==========
+2025/09/04 13:20:26 Archives processed: 33
+2025/09/04 13:20:26 Patents extracted: 275466
+2025/09/04 13:20:26 Patents inserted: 168068
+2025/09/04 13:20:26 Errors: 0
+2025/09/04 13:20:26 Time elapsed: 0.16 hours
+2025/09/04 13:20:26 Rate: 1735375 patents/hour
+2025/09/04 13:20:26 ================================
+2025/09/04 13:20:27 Current total patents in database: 8100601
+2025/09/04 13:20:29 Extracted 8305 patents from 8305 XML files in I20231116.tar
+2025/09/04 13:20:29 Moved I20231116.tar back to originals: /mnt/patents/originals/I20231116.tar.1756984829
+2025/09/04 13:20:29 Worker 1 processing: I20231221.tar
+2025/09/04 13:20:36 Extracted 8559 patents from 8559 XML files in I20231109.tar
+2025/09/04 13:20:36 Moved I20231109.tar back to originals: /mnt/patents/originals/I20231109.tar.1756984836
+2025/09/04 13:20:36 Worker 7 processing: I20231221_r1.tar
+2025/09/04 13:20:45 Successfully inserted 10887 out of 10887 patents
+2025/09/04 13:20:56 ========== STATISTICS ==========
+2025/09/04 13:20:56 Archives processed: 35
+2025/09/04 13:20:56 Patents extracted: 292330
+2025/09/04 13:20:56 Patents inserted: 178955
+2025/09/04 13:20:56 Errors: 0
+2025/09/04 13:20:56 Time elapsed: 0.17 hours
+2025/09/04 13:20:56 Rate: 1749756 patents/hour
+2025/09/04 13:20:56 ================================
+2025/09/04 13:20:59 Current total patents in database: 8100601
+2025/09/04 13:21:04 Extracted 9376 patents from 9376 XML files in I20231130.tar
+2025/09/04 13:21:04 Moved I20231130.tar back to originals: /mnt/patents/originals/I20231130.tar.1756984864
+2025/09/04 13:21:04 Worker 6 processing: I20231228.tar
+2025/09/04 13:21:05 Extracted 8254 patents from 8254 XML files in I20231207_r1.tar
+2025/09/04 13:21:05 Moved I20231207_r1.tar back to originals: /mnt/patents/originals/I20231207_r1.tar.1756984865
+2025/09/04 13:21:05 Worker 5 processing: I20231228_r1.tar
+2025/09/04 13:21:18 Extracted 6632 patents from 6632 XML files in I20231214.tar
+2025/09/04 13:21:18 Moved I20231214.tar back to originals: /mnt/patents/originals/I20231214.tar.1756984878
+2025/09/04 13:21:18 Worker 4 processing: I20240104.tar
+2025/09/04 13:21:18 Successfully inserted 7233 out of 7233 patents
+2025/09/04 13:21:26 ========== STATISTICS ==========
+2025/09/04 13:21:26 Archives processed: 38
+2025/09/04 13:21:26 Patents extracted: 316592
+2025/09/04 13:21:26 Patents inserted: 186188
+2025/09/04 13:21:26 Errors: 0
+2025/09/04 13:21:26 Time elapsed: 0.18 hours
+2025/09/04 13:21:26 Rate: 1804947 patents/hour
+2025/09/04 13:21:26 ================================
+2025/09/04 13:21:27 Current total patents in database: 8100601
+2025/09/04 13:21:42 Successfully inserted 8899 out of 8899 patents
+2025/09/04 13:21:56 ========== STATISTICS ==========
+2025/09/04 13:21:56 Archives processed: 38
+2025/09/04 13:21:56 Patents extracted: 316592
+2025/09/04 13:21:56 Patents inserted: 195087
+2025/09/04 13:21:56 Errors: 0
+2025/09/04 13:21:56 Time elapsed: 0.18 hours
+2025/09/04 13:21:56 Rate: 1723084 patents/hour
+2025/09/04 13:21:56 ================================
+2025/09/04 13:21:57 Current total patents in database: 8100601
+2025/09/04 13:22:02 Extracted 10029 patents from 10029 XML files in I20231221_r1.tar
+2025/09/04 13:22:02 Moved I20231221_r1.tar back to originals: /mnt/patents/originals/I20231221_r1.tar.1756984922
+2025/09/04 13:22:02 Worker 7 processing: I20240104_r1.tar
+2025/09/04 13:22:04 Extracted 8254 patents from 8254 XML files in I20231207.tar
+2025/09/04 13:22:04 Moved I20231207.tar back to originals: /mnt/patents/originals/I20231207.tar.1756984924
+2025/09/04 13:22:04 Worker 3 processing: I20240111.tar
+2025/09/04 13:22:08 Successfully inserted 8899 out of 8899 patents
+2025/09/04 13:22:13 Extracted 6632 patents from 6632 XML files in I20231214_r1.tar
+2025/09/04 13:22:13 Moved I20231214_r1.tar back to originals: /mnt/patents/originals/I20231214_r1.tar.1756984933
+2025/09/04 13:22:13 Worker 0 processing: I20240111_r1.tar
+2025/09/04 13:22:22 Extracted 9375 patents from 9375 XML files in I20231130_r1.tar
+2025/09/04 13:22:22 Moved I20231130_r1.tar back to originals: /mnt/patents/originals/I20231130_r1.tar.1756984942
+2025/09/04 13:22:22 Worker 2 processing: I20240118.tar
+2025/09/04 13:22:26 ========== STATISTICS ==========
+2025/09/04 13:22:26 Archives processed: 42
+2025/09/04 13:22:26 Patents extracted: 350882
+2025/09/04 13:22:26 Patents inserted: 203986
+2025/09/04 13:22:26 Errors: 0
+2025/09/04 13:22:26 Time elapsed: 0.19 hours
+2025/09/04 13:22:26 Rate: 1826853 patents/hour
+2025/09/04 13:22:26 ================================
+2025/09/04 13:22:27 Current total patents in database: 8100601
+2025/09/04 13:22:28 Extracted 9296 patents from 9296 XML files in I20231228.tar
+2025/09/04 13:22:28 Moved I20231228.tar back to originals: /mnt/patents/originals/I20231228.tar.1756984948
+2025/09/04 13:22:28 Worker 6 processing: I20240118_r1.tar
+2025/09/04 13:22:34 Successfully inserted 8838 out of 8838 patents
+2025/09/04 13:22:56 ========== STATISTICS ==========
+2025/09/04 13:22:56 Archives processed: 43
+2025/09/04 13:22:56 Patents extracted: 360178
+2025/09/04 13:22:56 Patents inserted: 212824
+2025/09/04 13:22:56 Errors: 0
+2025/09/04 13:22:56 Time elapsed: 0.20 hours
+2025/09/04 13:22:56 Rate: 1797274 patents/hour
+2025/09/04 13:22:56 ================================
+2025/09/04 13:22:57 Current total patents in database: 8100601
+2025/09/04 13:23:00 Successfully inserted 9084 out of 9084 patents
+2025/09/04 13:23:06 Extracted 10029 patents from 10029 XML files in I20231221.tar
+2025/09/04 13:23:06 Moved I20231221.tar back to originals: /mnt/patents/originals/I20231221.tar.1756984986
+2025/09/04 13:23:06 Worker 1 processing: I20240125.tar
+2025/09/04 13:23:15 Extracted 7961 patents from 7961 XML files in I20240111.tar
+2025/09/04 13:23:15 Moved I20240111.tar back to originals: /mnt/patents/originals/I20240111.tar.1756984995
+2025/09/04 13:23:15 Worker 3 processing: I20240125_r1.tar
+2025/09/04 13:23:23 Extracted 8726 patents from 8726 XML files in I20240104_r1.tar
+2025/09/04 13:23:23 Moved I20240104_r1.tar back to originals: /mnt/patents/originals/I20240104_r1.tar.1756985003
+2025/09/04 13:23:23 Worker 7 processing: I20240201.tar
+2025/09/04 13:23:25 Successfully inserted 8506 out of 8506 patents
+2025/09/04 13:23:26 ========== STATISTICS ==========
+2025/09/04 13:23:26 Archives processed: 46
+2025/09/04 13:23:26 Patents extracted: 386894
+2025/09/04 13:23:26 Patents inserted: 230414
+2025/09/04 13:23:26 Errors: 0
+2025/09/04 13:23:26 Time elapsed: 0.21 hours
+2025/09/04 13:23:26 Rate: 1853510 patents/hour
+2025/09/04 13:23:26 ================================
+2025/09/04 13:23:27 Current total patents in database: 8100601
+2025/09/04 13:23:35 Extracted 7715 patents from 7715 XML files in I20240118_r1.tar
+2025/09/04 13:23:35 Moved I20240118_r1.tar back to originals: /mnt/patents/originals/I20240118_r1.tar.1756985015
+2025/09/04 13:23:35 Worker 6 processing: I20240201_r1.tar
+2025/09/04 13:23:51 Successfully inserted 9078 out of 9078 patents
+2025/09/04 13:23:51 Extracted 8726 patents from 8726 XML files in I20240104.tar
+2025/09/04 13:23:51 Moved I20240104.tar back to originals: /mnt/patents/originals/I20240104.tar.1756985031
+2025/09/04 13:23:51 Worker 4 processing: I20240208.tar
+2025/09/04 13:23:56 ========== STATISTICS ==========
+2025/09/04 13:23:56 Archives processed: 48
+2025/09/04 13:23:56 Patents extracted: 403335
+2025/09/04 13:23:56 Patents inserted: 239492
+2025/09/04 13:23:56 Errors: 0
+2025/09/04 13:23:56 Time elapsed: 0.22 hours
+2025/09/04 13:23:56 Rate: 1858094 patents/hour
+2025/09/04 13:23:56 ================================
+2025/09/04 13:23:57 Current total patents in database: 8100601
+2025/09/04 13:23:57 Extracted 9296 patents from 9296 XML files in I20231228_r1.tar
+2025/09/04 13:23:57 Moved I20231228_r1.tar back to originals: /mnt/patents/originals/I20231228_r1.tar.1756985037
+2025/09/04 13:23:57 Worker 5 processing: I20240208_r1.tar
+2025/09/04 13:24:18 Extracted 7961 patents from 7961 XML files in I20240111_r1.tar
+2025/09/04 13:24:18 Moved I20240111_r1.tar back to originals: /mnt/patents/originals/I20240111_r1.tar.1756985058
+2025/09/04 13:24:18 Worker 0 processing: I20240215.tar
+2025/09/04 13:24:24 Extracted 7715 patents from 7715 XML files in I20240118.tar
+2025/09/04 13:24:24 Moved I20240118.tar back to originals: /mnt/patents/originals/I20240118.tar.1756985064
+2025/09/04 13:24:24 Worker 2 processing: I20240222.tar
+2025/09/04 13:24:24 Successfully inserted 8838 out of 8838 patents
+2025/09/04 13:24:26 ========== STATISTICS ==========
+2025/09/04 13:24:26 Archives processed: 51
+2025/09/04 13:24:26 Patents extracted: 428307
+2025/09/04 13:24:26 Patents inserted: 248330
+2025/09/04 13:24:26 Errors: 0
+2025/09/04 13:24:26 Time elapsed: 0.23 hours
+2025/09/04 13:24:26 Rate: 1900188 patents/hour
+2025/09/04 13:24:26 ================================
+2025/09/04 13:24:27 Current total patents in database: 8100601
+2025/09/04 13:24:32 Extracted 9298 patents from 9298 XML files in I20240125.tar
+2025/09/04 13:24:32 Moved I20240125.tar back to originals: /mnt/patents/originals/I20240125.tar.1756985072
+2025/09/04 13:24:32 Worker 1 processing: I20240229.tar
+2025/09/04 13:24:54 Extracted 8708 patents from 8708 XML files in I20240201_r1.tar
+2025/09/04 13:24:54 Moved I20240201_r1.tar back to originals: /mnt/patents/originals/I20240201_r1.tar.1756985094
+2025/09/04 13:24:54 Worker 6 processing: I20240307.tar
+2025/09/04 13:24:56 ========== STATISTICS ==========
+2025/09/04 13:24:56 Archives processed: 53
+2025/09/04 13:24:56 Patents extracted: 446313
+2025/09/04 13:24:56 Patents inserted: 248330
+2025/09/04 13:24:56 Errors: 0
+2025/09/04 13:24:56 Time elapsed: 0.23 hours
+2025/09/04 13:24:56 Rate: 1909478 patents/hour
+2025/09/04 13:24:56 ================================
+2025/09/04 13:24:57 Current total patents in database: 8100601
+2025/09/04 13:24:59 Successfully inserted 10887 out of 10887 patents
+2025/09/04 13:25:19 Extracted 9001 patents from 9001 XML files in I20240208.tar
+2025/09/04 13:25:19 Moved I20240208.tar back to originals: /mnt/patents/originals/I20240208.tar.1756985119
+2025/09/04 13:25:19 Worker 4 processing: I20240314.tar
+2025/09/04 13:25:20 Successfully inserted 7579 out of 7579 patents
+2025/09/04 13:25:26 ========== STATISTICS ==========
+2025/09/04 13:25:26 Archives processed: 54
+2025/09/04 13:25:26 Patents extracted: 455314
+2025/09/04 13:25:26 Patents inserted: 266796
+2025/09/04 13:25:26 Errors: 0
+2025/09/04 13:25:26 Time elapsed: 0.24 hours
+2025/09/04 13:25:26 Rate: 1880926 patents/hour
+2025/09/04 13:25:26 ================================
+2025/09/04 13:25:27 Current total patents in database: 8100601
+2025/09/04 13:25:37 Extracted 7854 patents from 7854 XML files in I20240222.tar
+2025/09/04 13:25:37 Moved I20240222.tar back to originals: /mnt/patents/originals/I20240222.tar.1756985137
+2025/09/04 13:25:37 Worker 2 processing: I20240321.tar
+2025/09/04 13:25:42 Extracted 8708 patents from 8708 XML files in I20240201.tar
+2025/09/04 13:25:42 Moved I20240201.tar back to originals: /mnt/patents/originals/I20240201.tar.1756985142
+2025/09/04 13:25:42 Worker 7 processing: I20240328.tar
+2025/09/04 13:25:45 Successfully inserted 8670 out of 8670 patents
+2025/09/04 13:25:50 Extracted 9298 patents from 9298 XML files in I20240125_r1.tar
+2025/09/04 13:25:50 Moved I20240125_r1.tar back to originals: /mnt/patents/originals/I20240125_r1.tar.1756985150
+2025/09/04 13:25:50 Worker 3 processing: I20240404.tar
+2025/09/04 13:25:56 Extracted 9466 patents from 9466 XML files in I20240229.tar
+2025/09/04 13:25:56 Moved I20240229.tar back to originals: /mnt/patents/originals/I20240229.tar.1756985156
+2025/09/04 13:25:56 Worker 1 processing: I20240411.tar
+2025/09/04 13:25:56 ========== STATISTICS ==========
+2025/09/04 13:25:56 Archives processed: 58
+2025/09/04 13:25:56 Patents extracted: 490640
+2025/09/04 13:25:56 Patents inserted: 275466
+2025/09/04 13:25:56 Errors: 0
+2025/09/04 13:25:56 Time elapsed: 0.25 hours
+2025/09/04 13:25:56 Rate: 1959407 patents/hour
+2025/09/04 13:25:56 ================================
+2025/09/04 13:25:57 Current total patents in database: 8100601
+2025/09/04 13:26:12 Successfully inserted 8305 out of 8305 patents
+2025/09/04 13:26:22 Extracted 8181 patents from 8181 XML files in I20240215.tar
+2025/09/04 13:26:22 Moved I20240215.tar back to originals: /mnt/patents/originals/I20240215.tar.1756985182
+2025/09/04 13:26:22 Worker 0 processing: I20240418.tar
+2025/09/04 13:26:26 ========== STATISTICS ==========
+2025/09/04 13:26:26 Archives processed: 59
+2025/09/04 13:26:26 Patents extracted: 498821
+2025/09/04 13:26:26 Patents inserted: 283771
+2025/09/04 13:26:26 Errors: 0
+2025/09/04 13:26:26 Time elapsed: 0.26 hours
+2025/09/04 13:26:26 Rate: 1927917 patents/hour
+2025/09/04 13:26:26 ================================
+2025/09/04 13:26:27 Current total patents in database: 8100601
+2025/09/04 13:26:29 Extracted 9001 patents from 9001 XML files in I20240208_r1.tar
+2025/09/04 13:26:29 Moved I20240208_r1.tar back to originals: /mnt/patents/originals/I20240208_r1.tar.1756985189
+2025/09/04 13:26:29 Worker 5 processing: I20240425.tar
+2025/09/04 13:26:40 Successfully inserted 8559 out of 8559 patents
+2025/09/04 13:26:53 Extracted 7116 patents from 7116 XML files in I20240307.tar
+2025/09/04 13:26:53 Moved I20240307.tar back to originals: /mnt/patents/originals/I20240307.tar.1756985213
+2025/09/04 13:26:53 Worker 6 processing: I20240502.tar
+2025/09/04 13:26:56 ========== STATISTICS ==========
+2025/09/04 13:26:56 Archives processed: 61
+2025/09/04 13:26:56 Patents extracted: 514938
+2025/09/04 13:26:56 Patents inserted: 292330
+2025/09/04 13:26:56 Errors: 0
+2025/09/04 13:26:56 Time elapsed: 0.27 hours
+2025/09/04 13:26:56 Rate: 1928107 patents/hour
+2025/09/04 13:26:56 ================================
+2025/09/04 13:26:57 Current total patents in database: 8100601
+2025/09/04 13:27:11 Successfully inserted 9376 out of 9376 patents
+2025/09/04 13:27:14 Extracted 9178 patents from 9178 XML files in I20240321.tar
+2025/09/04 13:27:14 Moved I20240321.tar back to originals: /mnt/patents/originals/I20240321.tar.1756985234
+2025/09/04 13:27:14 Worker 2 processing: I20240509.tar
+2025/09/04 13:27:21 Extracted 9090 patents from 9090 XML files in I20240328.tar
+2025/09/04 13:27:21 Moved I20240328.tar back to originals: /mnt/patents/originals/I20240328.tar.1756985241
+2025/09/04 13:27:21 Worker 7 processing: I20240516.tar
+2025/09/04 13:27:26 ========== STATISTICS ==========
+2025/09/04 13:27:26 Archives processed: 63
+2025/09/04 13:27:26 Patents extracted: 533206
+2025/09/04 13:27:26 Patents inserted: 301706
+2025/09/04 13:27:26 Errors: 0
+2025/09/04 13:27:26 Time elapsed: 0.28 hours
+2025/09/04 13:27:26 Rate: 1936098 patents/hour
+2025/09/04 13:27:26 ================================
+2025/09/04 13:27:27 Current total patents in database: 8100601
+2025/09/04 13:27:47 Successfully inserted 8254 out of 8254 patents
+2025/09/04 13:27:53 Extracted 7079 patents from 7079 XML files in I20240404.tar
+2025/09/04 13:27:53 Moved I20240404.tar back to originals: /mnt/patents/originals/I20240404.tar.1756985273
+2025/09/04 13:27:53 Worker 3 processing: I20240523.tar
+2025/09/04 13:27:56 ========== STATISTICS ==========
+2025/09/04 13:27:56 Archives processed: 64
+2025/09/04 13:27:56 Patents extracted: 540285
+2025/09/04 13:27:56 Patents inserted: 309960
+2025/09/04 13:27:56 Errors: 0
+2025/09/04 13:27:56 Time elapsed: 0.28 hours
+2025/09/04 13:27:56 Rate: 1904185 patents/hour
+2025/09/04 13:27:56 ================================
+2025/09/04 13:27:56 Current total patents in database: 8100601
+2025/09/04 13:27:57 Extracted 9541 patents from 9541 XML files in I20240314.tar
+2025/09/04 13:27:57 Moved I20240314.tar back to originals: /mnt/patents/originals/I20240314.tar.1756985277
+2025/09/04 13:27:57 Worker 4 processing: I20240530.tar
+2025/09/04 13:28:01 Extracted 8484 patents from 8484 XML files in I20240418.tar
+2025/09/04 13:28:01 Moved I20240418.tar back to originals: /mnt/patents/originals/I20240418.tar.1756985281
+2025/09/04 13:28:01 Worker 0 processing: I20240606.tar
+2025/09/04 13:28:03 Extracted 8328 patents from 8328 XML files in I20240425.tar
+2025/09/04 13:28:03 Moved I20240425.tar back to originals: /mnt/patents/originals/I20240425.tar.1756985283
+2025/09/04 13:28:03 Worker 5 processing: I20240613.tar
+2025/09/04 13:28:08 Successfully inserted 6632 out of 6632 patents
+2025/09/04 13:28:15 Extracted 7589 patents from 7589 XML files in I20240411.tar
+2025/09/04 13:28:15 Moved I20240411.tar back to originals: /mnt/patents/originals/I20240411.tar.1756985295
+2025/09/04 13:28:15 Worker 1 processing: I20240620.tar
+2025/09/04 13:28:26 ========== STATISTICS ==========
+2025/09/04 13:28:26 Archives processed: 68
+2025/09/04 13:28:26 Patents extracted: 574227
+2025/09/04 13:28:26 Patents inserted: 316592
+2025/09/04 13:28:26 Errors: 0
+2025/09/04 13:28:26 Time elapsed: 0.29 hours
+2025/09/04 13:28:26 Rate: 1966065 patents/hour
+2025/09/04 13:28:26 ================================
+2025/09/04 13:28:26 Current total patents in database: 8100601
+2025/09/04 13:28:39 Successfully inserted 10029 out of 10029 patents
+2025/09/04 13:28:56 ========== STATISTICS ==========
+2025/09/04 13:28:56 Archives processed: 68
+2025/09/04 13:28:56 Patents extracted: 574227
+2025/09/04 13:28:56 Patents inserted: 326621
+2025/09/04 13:28:56 Errors: 0
+2025/09/04 13:28:56 Time elapsed: 0.30 hours
+2025/09/04 13:28:56 Rate: 1911527 patents/hour
+2025/09/04 13:28:56 ================================
+2025/09/04 13:28:56 Current total patents in database: 8100601
+2025/09/04 13:28:58 Extracted 8577 patents from 8577 XML files in I20240516.tar
+2025/09/04 13:28:58 Moved I20240516.tar back to originals: /mnt/patents/originals/I20240516.tar.1756985338
+2025/09/04 13:28:58 Worker 7 processing: I20240627.tar
+2025/09/04 13:29:06 Successfully inserted 8254 out of 8254 patents
+2025/09/04 13:29:26 ========== STATISTICS ==========
+2025/09/04 13:29:26 Archives processed: 69
+2025/09/04 13:29:26 Patents extracted: 582804
+2025/09/04 13:29:26 Patents inserted: 334875
+2025/09/04 13:29:26 Errors: 0
+2025/09/04 13:29:26 Time elapsed: 0.31 hours
+2025/09/04 13:29:26 Rate: 1887712 patents/hour
+2025/09/04 13:29:26 ================================
+2025/09/04 13:29:26 Current total patents in database: 8100601
+2025/09/04 13:29:27 Successfully inserted 6632 out of 6632 patents
+2025/09/04 13:29:27 Extracted 8612 patents from 8612 XML files in I20240523.tar
+2025/09/04 13:29:27 Moved I20240523.tar back to originals: /mnt/patents/originals/I20240523.tar.1756985367
+2025/09/04 13:29:27 Worker 3 processing: I20240704.tar
+2025/09/04 13:29:31 Extracted 9537 patents from 9537 XML files in I20240502.tar
+2025/09/04 13:29:31 Moved I20240502.tar back to originals: /mnt/patents/originals/I20240502.tar.1756985371
+2025/09/04 13:29:31 Worker 6 processing: I20240711.tar
+2025/09/04 13:29:33 Extracted 8407 patents from 8407 XML files in I20240509.tar
+2025/09/04 13:29:33 Moved I20240509.tar back to originals: /mnt/patents/originals/I20240509.tar.1756985373
+2025/09/04 13:29:33 Worker 2 processing: I20240718.tar
+2025/09/04 13:29:35 Extracted 8565 patents from 8565 XML files in I20240613.tar
+2025/09/04 13:29:35 Moved I20240613.tar back to originals: /mnt/patents/originals/I20240613.tar.1756985375
+2025/09/04 13:29:35 Worker 5 processing: I20240725.tar
+2025/09/04 13:29:53 Successfully inserted 9375 out of 9375 patents
+2025/09/04 13:29:56 ========== STATISTICS ==========
+2025/09/04 13:29:56 Archives processed: 73
+2025/09/04 13:29:56 Patents extracted: 617925
+2025/09/04 13:29:56 Patents inserted: 350882
+2025/09/04 13:29:56 Errors: 0
+2025/09/04 13:29:56 Time elapsed: 0.32 hours
+2025/09/04 13:29:56 Rate: 1948865 patents/hour
+2025/09/04 13:29:56 ================================
+2025/09/04 13:29:56 Current total patents in database: 8100601
+2025/09/04 13:29:56 Extracted 9865 patents from 9865 XML files in I20240620.tar
+2025/09/04 13:29:56 Moved I20240620.tar back to originals: /mnt/patents/originals/I20240620.tar.1756985396
+2025/09/04 13:29:56 Worker 1 processing: I20240801.tar
+2025/09/04 13:30:10 Extracted 7723 patents from 7723 XML files in I20240530.tar
+2025/09/04 13:30:10 Moved I20240530.tar back to originals: /mnt/patents/originals/I20240530.tar.1756985410
+2025/09/04 13:30:10 Worker 4 processing: I20240808.tar
+2025/09/04 13:30:26 Extracted 8720 patents from 8720 XML files in I20240606.tar
+2025/09/04 13:30:26 Moved I20240606.tar back to originals: /mnt/patents/originals/I20240606.tar.1756985426
+2025/09/04 13:30:26 Worker 0 processing: I20240815.tar
+2025/09/04 13:30:26 ========== STATISTICS ==========
+2025/09/04 13:30:26 Archives processed: 76
+2025/09/04 13:30:26 Patents extracted: 644233
+2025/09/04 13:30:26 Patents inserted: 350882
+2025/09/04 13:30:26 Errors: 0
+2025/09/04 13:30:26 Time elapsed: 0.33 hours
+2025/09/04 13:30:26 Rate: 1979805 patents/hour
+2025/09/04 13:30:26 ================================
+2025/09/04 13:30:26 Current total patents in database: 8100601
+2025/09/04 13:30:29 Successfully inserted 9296 out of 9296 patents
+2025/09/04 13:30:56 ========== STATISTICS ==========
+2025/09/04 13:30:56 Archives processed: 76
+2025/09/04 13:30:56 Patents extracted: 644233
+2025/09/04 13:30:56 Patents inserted: 360178
+2025/09/04 13:30:56 Errors: 0
+2025/09/04 13:30:56 Time elapsed: 0.33 hours
+2025/09/04 13:30:56 Rate: 1930369 patents/hour
+2025/09/04 13:30:56 ================================
+2025/09/04 13:30:56 Current total patents in database: 8100601
+2025/09/04 13:31:00 Successfully inserted 10029 out of 10029 patents
+2025/09/04 13:31:25 Successfully inserted 7961 out of 7961 patents
+2025/09/04 13:31:26 ========== STATISTICS ==========
+2025/09/04 13:31:26 Archives processed: 76
+2025/09/04 13:31:26 Patents extracted: 644233
+2025/09/04 13:31:26 Patents inserted: 378168
+2025/09/04 13:31:26 Errors: 0
+2025/09/04 13:31:26 Time elapsed: 0.34 hours
+2025/09/04 13:31:26 Rate: 1883342 patents/hour
+2025/09/04 13:31:26 ================================
+2025/09/04 13:31:26 Current total patents in database: 8100601
+2025/09/04 13:31:31 Extracted 7699 patents from 7699 XML files in I20240718.tar
+2025/09/04 13:31:31 Moved I20240718.tar back to originals: /mnt/patents/originals/I20240718.tar
+2025/09/04 13:31:31 Worker 2 processing: I20240822.tar
+2025/09/04 13:31:32 Extracted 13179 patents from 13179 XML files in I20240711.tar
+2025/09/04 13:31:33 Moved I20240711.tar back to originals: /mnt/patents/originals/I20240711.tar
+2025/09/04 13:31:33 Worker 6 processing: I20240829.tar
+2025/09/04 13:31:34 Extracted 7993 patents from 7993 XML files in I20240808.tar
+2025/09/04 13:31:34 Moved I20240808.tar back to originals: /mnt/patents/originals/I20240808.tar
+2025/09/04 13:31:34 Worker 4 processing: I20240905.tar
+2025/09/04 13:31:35 Extracted 6903 patents from 6903 XML files in I20240725.tar
+2025/09/04 13:31:35 Moved I20240725.tar back to originals: /mnt/patents/originals/I20240725.tar
+2025/09/04 13:31:35 Worker 5 processing: I20240912.tar
+2025/09/04 13:31:41 Extracted 9097 patents from 9097 XML files in I20240801.tar
+2025/09/04 13:31:41 Moved I20240801.tar back to originals: /mnt/patents/originals/I20240801.tar
+2025/09/04 13:31:41 Worker 1 processing: I20240919.tar
+2025/09/04 13:31:50 Extracted 9431 patents from 9431 XML files in I20240627.tar
+2025/09/04 13:31:50 Moved I20240627.tar back to originals: /mnt/patents/originals/I20240627.tar
+2025/09/04 13:31:50 Worker 7 processing: I20240926.tar
+2025/09/04 13:31:53 Successfully inserted 8726 out of 8726 patents
+2025/09/04 13:31:56 ========== STATISTICS ==========
+2025/09/04 13:31:56 Archives processed: 82
+2025/09/04 13:31:56 Patents extracted: 698535
+2025/09/04 13:31:56 Patents inserted: 386894
+2025/09/04 13:31:56 Errors: 0
+2025/09/04 13:31:56 Time elapsed: 0.35 hours
+2025/09/04 13:31:56 Rate: 1993523 patents/hour
+2025/09/04 13:31:56 ================================
+2025/09/04 13:31:56 Current total patents in database: 8100601
+2025/09/04 13:32:04 Extracted 9625 patents from 9625 XML files in I20240704.tar
+2025/09/04 13:32:04 Moved I20240704.tar back to originals: /mnt/patents/originals/I20240704.tar
+2025/09/04 13:32:04 Worker 3 processing: I20241003.tar
+2025/09/04 13:32:18 Successfully inserted 7715 out of 7715 patents
+2025/09/04 13:32:26 ========== STATISTICS ==========
+2025/09/04 13:32:26 Archives processed: 83
+2025/09/04 13:32:26 Patents extracted: 708160
+2025/09/04 13:32:26 Patents inserted: 394609
+2025/09/04 13:32:26 Errors: 0
+2025/09/04 13:32:26 Time elapsed: 0.36 hours
+2025/09/04 13:32:26 Rate: 1974044 patents/hour
+2025/09/04 13:32:26 ================================
+2025/09/04 13:32:26 Current total patents in database: 8100601
+2025/09/04 13:32:46 Successfully inserted 8726 out of 8726 patents
+2025/09/04 13:32:49 Extracted 8965 patents from 8965 XML files in I20240815.tar
+2025/09/04 13:32:49 Moved I20240815.tar back to originals: /mnt/patents/originals/I20240815.tar
+2025/09/04 13:32:49 Worker 0 processing: I20241010.tar
+2025/09/04 13:32:50 Extracted 6092 patents from 6092 XML files in I20240905.tar
+2025/09/04 13:32:50 Moved I20240905.tar back to originals: /mnt/patents/originals/I20240905.tar
+2025/09/04 13:32:50 Worker 4 processing: I20241017.tar
+2025/09/04 13:32:56 ========== STATISTICS ==========
+2025/09/04 13:32:56 Archives processed: 85
+2025/09/04 13:32:56 Patents extracted: 723217
+2025/09/04 13:32:56 Patents inserted: 403335
+2025/09/04 13:32:56 Errors: 0
+2025/09/04 13:32:56 Time elapsed: 0.37 hours
+2025/09/04 13:32:56 Rate: 1970248 patents/hour
+2025/09/04 13:32:56 ================================
+2025/09/04 13:32:56 Current total patents in database: 8100601
+2025/09/04 13:33:10 Extracted 8291 patents from 8291 XML files in I20240829.tar
+2025/09/04 13:33:10 Moved I20240829.tar back to originals: /mnt/patents/originals/I20240829.tar
+2025/09/04 13:33:10 Worker 6 processing: I20241024.tar
+2025/09/04 13:33:17 Successfully inserted 9296 out of 9296 patents
+2025/09/04 13:33:26 ========== STATISTICS ==========
+2025/09/04 13:33:26 Archives processed: 86
+2025/09/04 13:33:26 Patents extracted: 731508
+2025/09/04 13:33:26 Patents inserted: 412631
+2025/09/04 13:33:26 Errors: 0
+2025/09/04 13:33:26 Time elapsed: 0.38 hours
+2025/09/04 13:33:26 Rate: 1948597 patents/hour
+2025/09/04 13:33:26 ================================
+2025/09/04 13:33:26 Current total patents in database: 8100601
+2025/09/04 13:33:42 Extracted 9621 patents from 9621 XML files in I20240926.tar
+2025/09/04 13:33:42 Moved I20240926.tar back to originals: /mnt/patents/originals/I20240926.tar
+2025/09/04 13:33:42 Worker 7 processing: I20241031.tar
+2025/09/04 13:33:43 Extracted 8206 patents from 8206 XML files in I20240822.tar
+2025/09/04 13:33:43 Moved I20240822.tar back to originals: /mnt/patents/originals/I20240822.tar
+2025/09/04 13:33:43 Worker 2 processing: I20241107.tar
+2025/09/04 13:33:50 Extracted 8311 patents from 8311 XML files in I20240912.tar
+2025/09/04 13:33:50 Moved I20240912.tar back to originals: /mnt/patents/originals/I20240912.tar
+2025/09/04 13:33:50 Worker 5 processing: I20241114.tar
+2025/09/04 13:33:51 Successfully inserted 7961 out of 7961 patents
+2025/09/04 13:33:56 ========== STATISTICS ==========
+2025/09/04 13:33:56 Archives processed: 89
+2025/09/04 13:33:56 Patents extracted: 757646
+2025/09/04 13:33:56 Patents inserted: 420592
+2025/09/04 13:33:56 Errors: 0
+2025/09/04 13:33:56 Time elapsed: 0.38 hours
+2025/09/04 13:33:56 Rate: 1974395 patents/hour
+2025/09/04 13:33:56 ================================
+2025/09/04 13:33:56 Current total patents in database: 8100601
+2025/09/04 13:33:58 Extracted 8939 patents from 8939 XML files in I20240919.tar
+2025/09/04 13:33:58 Moved I20240919.tar back to originals: /mnt/patents/originals/I20240919.tar
+2025/09/04 13:33:58 Worker 1 processing: I20241121.tar
+2025/09/04 13:34:06 Extracted 10689 patents from 10689 XML files in I20241003.tar
+2025/09/04 13:34:06 Moved I20241003.tar back to originals: /mnt/patents/originals/I20241003.tar
+2025/09/04 13:34:06 Worker 3 processing: I20241128.tar
+2025/09/04 13:34:15 Successfully inserted 7715 out of 7715 patents
+2025/09/04 13:34:26 ========== STATISTICS ==========
+2025/09/04 13:34:26 Archives processed: 91
+2025/09/04 13:34:26 Patents extracted: 777274
+2025/09/04 13:34:26 Patents inserted: 428307
+2025/09/04 13:34:26 Errors: 0
+2025/09/04 13:34:26 Time elapsed: 0.39 hours
+2025/09/04 13:34:26 Rate: 1982492 patents/hour
+2025/09/04 13:34:26 ================================
+2025/09/04 13:34:26 Current total patents in database: 8100601
+2025/09/04 13:34:39 Extracted 8625 patents from 8625 XML files in I20241024.tar
+2025/09/04 13:34:39 Moved I20241024.tar back to originals: /mnt/patents/originals/I20241024.tar
+2025/09/04 13:34:39 Worker 6 processing: I20241205.tar
+2025/09/04 13:34:43 Extracted 6542 patents from 6542 XML files in I20241010.tar
+2025/09/04 13:34:43 Moved I20241010.tar back to originals: /mnt/patents/originals/I20241010.tar
+2025/09/04 13:34:43 Worker 0 processing: I20241212.tar
+2025/09/04 13:34:44 Successfully inserted 9298 out of 9298 patents
+2025/09/04 13:34:56 ========== STATISTICS ==========
+2025/09/04 13:34:56 Archives processed: 93
+2025/09/04 13:34:56 Patents extracted: 792441
+2025/09/04 13:34:56 Patents inserted: 437605
+2025/09/04 13:34:56 Errors: 0
+2025/09/04 13:34:56 Time elapsed: 0.40 hours
+2025/09/04 13:34:56 Rate: 1979112 patents/hour
+2025/09/04 13:34:56 ================================
+2025/09/04 13:34:56 Current total patents in database: 8100601
+2025/09/04 13:35:08 Extracted 8673 patents from 8673 XML files in I20241017.tar
+2025/09/04 13:35:08 Moved I20241017.tar back to originals: /mnt/patents/originals/I20241017.tar
+2025/09/04 13:35:08 Worker 4 processing: I20241219.tar
+2025/09/04 13:35:10 Successfully inserted 8708 out of 8708 patents
+2025/09/04 13:35:23 Extracted 8415 patents from 8415 XML files in I20241107.tar
+2025/09/04 13:35:23 Moved I20241107.tar back to originals: /mnt/patents/originals/I20241107.tar
+2025/09/04 13:35:23 Worker 2 processing: I20241226.tar
+2025/09/04 13:35:26 ========== STATISTICS ==========
+2025/09/04 13:35:26 Archives processed: 95
+2025/09/04 13:35:26 Patents extracted: 809529
+2025/09/04 13:35:26 Patents inserted: 446313
+2025/09/04 13:35:26 Errors: 0
+2025/09/04 13:35:26 Time elapsed: 0.41 hours
+2025/09/04 13:35:26 Rate: 1980569 patents/hour
+2025/09/04 13:35:26 ================================
+2025/09/04 13:35:26 Current total patents in database: 8100601
+2025/09/04 13:35:30 Extracted 7934 patents from 7934 XML files in I20241121.tar
+2025/09/04 13:35:30 Moved I20241121.tar back to originals: /mnt/patents/originals/I20241121.tar
+2025/09/04 13:35:30 Worker 1 processing: I20250102.tar
+2025/09/04 13:35:37 Successfully inserted 9001 out of 9001 patents
+2025/09/04 13:35:56 ========== STATISTICS ==========
+2025/09/04 13:35:56 Archives processed: 96
+2025/09/04 13:35:56 Patents extracted: 817463
+2025/09/04 13:35:56 Patents inserted: 455314
+2025/09/04 13:35:56 Errors: 0
+2025/09/04 13:35:56 Time elapsed: 0.42 hours
+2025/09/04 13:35:56 Rate: 1960019 patents/hour
+2025/09/04 13:35:56 ================================
+2025/09/04 13:35:56 Current total patents in database: 8100601
+2025/09/04 13:36:01 Successfully inserted 7854 out of 7854 patents
+2025/09/04 13:36:03 Extracted 8004 patents from 8004 XML files in I20241031.tar
+2025/09/04 13:36:03 Moved I20241031.tar back to originals: /mnt/patents/originals/I20241031.tar
+2025/09/04 13:36:03 Worker 7 processing: I20250109.tar
+2025/09/04 13:36:09 Extracted 8034 patents from 8034 XML files in I20241212.tar
+2025/09/04 13:36:09 Moved I20241212.tar back to originals: /mnt/patents/originals/I20241212.tar
+2025/09/04 13:36:09 Worker 0 processing: I20250116.tar
+2025/09/04 13:36:11 Extracted 8315 patents from 8315 XML files in I20241114.tar
+2025/09/04 13:36:11 Moved I20241114.tar back to originals: /mnt/patents/originals/I20241114.tar
+2025/09/04 13:36:11 Worker 5 processing: I20250123.tar
+2025/09/04 13:36:24 Successfully inserted 8708 out of 8708 patents
+2025/09/04 13:36:24 Extracted 9773 patents from 9773 XML files in I20241205.tar
+2025/09/04 13:36:24 Moved I20241205.tar back to originals: /mnt/patents/originals/I20241205.tar
+2025/09/04 13:36:24 Worker 6 processing: I20250130.tar
+2025/09/04 13:36:26 ========== STATISTICS ==========
+2025/09/04 13:36:26 Archives processed: 100
+2025/09/04 13:36:26 Patents extracted: 851589
+2025/09/04 13:36:26 Patents inserted: 471876
+2025/09/04 13:36:26 Errors: 0
+2025/09/04 13:36:26 Time elapsed: 0.43 hours
+2025/09/04 13:36:26 Rate: 2001844 patents/hour
+2025/09/04 13:36:26 ================================
+2025/09/04 13:36:26 Current total patents in database: 8100601
+2025/09/04 13:36:35 Extracted 8635 patents from 8635 XML files in I20241128.tar
+2025/09/04 13:36:35 Moved I20241128.tar back to originals: /mnt/patents/originals/I20241128.tar
+2025/09/04 13:36:35 Worker 3 processing: I20250213.tar
+2025/09/04 13:36:53 Extracted 9153 patents from 9153 XML files in I20250102.tar
+2025/09/04 13:36:53 Moved I20250102.tar back to originals: /mnt/patents/originals/I20250102.tar
+2025/09/04 13:36:53 Worker 1 processing: I20250220.tar
+2025/09/04 13:36:56 ========== STATISTICS ==========
+2025/09/04 13:36:56 Archives processed: 102
+2025/09/04 13:36:56 Patents extracted: 869377
+2025/09/04 13:36:56 Patents inserted: 471876
+2025/09/04 13:36:56 Errors: 0
+2025/09/04 13:36:56 Time elapsed: 0.43 hours
+2025/09/04 13:36:56 Rate: 2004393 patents/hour
+2025/09/04 13:36:56 ================================
+2025/09/04 13:36:56 Current total patents in database: 8100601
+2025/09/04 13:37:02 Successfully inserted 9298 out of 9298 patents
+2025/09/04 13:37:21 Extracted 7897 patents from 7897 XML files in I20250116.tar
+2025/09/04 13:37:21 Moved I20250116.tar back to originals: /mnt/patents/originals/I20250116.tar
+2025/09/04 13:37:21 Worker 0 processing: I20250227.tar
+2025/09/04 13:37:26 ========== STATISTICS ==========
+2025/09/04 13:37:26 Archives processed: 103
+2025/09/04 13:37:26 Patents extracted: 877274
+2025/09/04 13:37:26 Patents inserted: 481174
+2025/09/04 13:37:26 Errors: 0
+2025/09/04 13:37:26 Time elapsed: 0.44 hours
+2025/09/04 13:37:26 Rate: 1984472 patents/hour
+2025/09/04 13:37:26 ================================
+2025/09/04 13:37:26 Current total patents in database: 8100601
+2025/09/04 13:37:28 Successfully inserted 9466 out of 9466 patents
+2025/09/04 13:37:28 Extracted 8320 patents from 8320 XML files in I20241219.tar
+2025/09/04 13:37:28 Moved I20241219.tar back to originals: /mnt/patents/originals/I20241219.tar
+2025/09/04 13:37:28 Worker 4 processing: I20250306.tar
+2025/09/04 13:37:49 Extracted 8404 patents from 8404 XML files in I20241226.tar
+2025/09/04 13:37:49 Moved I20241226.tar back to originals: /mnt/patents/originals/I20241226.tar
+2025/09/04 13:37:49 Worker 2 processing: I20250313.tar
+2025/09/04 13:37:52 Successfully inserted 8181 out of 8181 patents
+2025/09/04 13:37:56 ========== STATISTICS ==========
+2025/09/04 13:37:56 Archives processed: 105
+2025/09/04 13:37:56 Patents extracted: 893998
+2025/09/04 13:37:56 Patents inserted: 498821
+2025/09/04 13:37:56 Errors: 0
+2025/09/04 13:37:56 Time elapsed: 0.45 hours
+2025/09/04 13:37:56 Rate: 1984887 patents/hour
+2025/09/04 13:37:56 ================================
+2025/09/04 13:37:56 Current total patents in database: 8100601
+2025/09/04 13:37:59 Extracted 8422 patents from 8422 XML files in I20250213.tar
+2025/09/04 13:38:00 Moved I20250213.tar back to originals: /mnt/patents/originals/I20250213.tar
+2025/09/04 13:38:00 Worker 3 processing: I20250320.tar
+2025/09/04 13:38:04 Extracted 7156 patents from 7156 XML files in I20250220.tar
+2025/09/04 13:38:04 Moved I20250220.tar back to originals: /mnt/patents/originals/I20250220.tar
+2025/09/04 13:38:04 Worker 1 processing: I20250327.tar
+2025/09/04 13:38:14 Extracted 7078 patents from 7078 XML files in I20250123.tar
+2025/09/04 13:38:14 Moved I20250123.tar back to originals: /mnt/patents/originals/I20250123.tar
+2025/09/04 13:38:14 Worker 5 processing: I20250403.tar
+2025/09/04 13:38:19 Successfully inserted 9001 out of 9001 patents
+2025/09/04 13:38:26 ========== STATISTICS ==========
+2025/09/04 13:38:26 Archives processed: 108
+2025/09/04 13:38:26 Patents extracted: 916654
+2025/09/04 13:38:26 Patents inserted: 507822
+2025/09/04 13:38:26 Errors: 0
+2025/09/04 13:38:26 Time elapsed: 0.46 hours
+2025/09/04 13:38:26 Rate: 1998218 patents/hour
+2025/09/04 13:38:26 ================================
+2025/09/04 13:38:26 Current total patents in database: 8100601
+2025/09/04 13:38:38 Successfully inserted 7116 out of 7116 patents
+2025/09/04 13:38:43 Extracted 8593 patents from 8593 XML files in I20250109.tar
+2025/09/04 13:38:43 Moved I20250109.tar back to originals: /mnt/patents/originals/I20250109.tar
+2025/09/04 13:38:43 Worker 7 processing: I20250410.tar
+2025/09/04 13:38:51 Extracted 9783 patents from 9783 XML files in I20250306.tar
+2025/09/04 13:38:51 Moved I20250306.tar back to originals: /mnt/patents/originals/I20250306.tar
+2025/09/04 13:38:51 Worker 4 processing: I20250417.tar
+2025/09/04 13:38:56 ========== STATISTICS ==========
+2025/09/04 13:38:56 Archives processed: 110
+2025/09/04 13:38:56 Patents extracted: 935030
+2025/09/04 13:38:56 Patents inserted: 514938
+2025/09/04 13:38:56 Errors: 0
+2025/09/04 13:38:56 Time elapsed: 0.47 hours
+2025/09/04 13:38:56 Rate: 2001909 patents/hour
+2025/09/04 13:38:56 ================================
+2025/09/04 13:38:56 Current total patents in database: 8100601
+2025/09/04 13:39:04 Successfully inserted 9178 out of 9178 patents
+2025/09/04 13:39:04 Extracted 9146 patents from 9146 XML files in I20250130.tar
+2025/09/04 13:39:04 Moved I20250130.tar back to originals: /mnt/patents/originals/I20250130.tar
+2025/09/04 13:39:04 Worker 6 processing: I20250424.tar
+2025/09/04 13:39:26 ========== STATISTICS ==========
+2025/09/04 13:39:26 Archives processed: 111
+2025/09/04 13:39:26 Patents extracted: 944176
+2025/09/04 13:39:26 Patents inserted: 524116
+2025/09/04 13:39:26 Errors: 0
+2025/09/04 13:39:26 Time elapsed: 0.48 hours
+2025/09/04 13:39:26 Rate: 1986056 patents/hour
+2025/09/04 13:39:26 ================================
+2025/09/04 13:39:26 Current total patents in database: 8100601
+2025/09/04 13:39:30 Successfully inserted 9090 out of 9090 patents
+2025/09/04 13:39:30 Extracted 9239 patents from 9239 XML files in I20250320.tar
+2025/09/04 13:39:30 Moved I20250320.tar back to originals: /mnt/patents/originals/I20250320.tar
+2025/09/04 13:39:30 Worker 3 processing: I20250508.tar
+2025/09/04 13:39:49 Extracted 6765 patents from 6765 XML files in I20250410.tar
+2025/09/04 13:39:49 Moved I20250410.tar back to originals: /mnt/patents/originals/I20250410.tar
+2025/09/04 13:39:49 Worker 7 processing: I20250515.tar
+2025/09/04 13:39:50 Successfully inserted 7079 out of 7079 patents
+2025/09/04 13:39:56 ========== STATISTICS ==========
+2025/09/04 13:39:56 Archives processed: 113
+2025/09/04 13:39:56 Patents extracted: 960180
+2025/09/04 13:39:56 Patents inserted: 540285
+2025/09/04 13:39:56 Errors: 0
+2025/09/04 13:39:56 Time elapsed: 0.48 hours
+2025/09/04 13:39:56 Rate: 1984926 patents/hour
+2025/09/04 13:39:56 ================================
+2025/09/04 13:39:56 Current total patents in database: 8100601
+2025/09/04 13:39:59 Extracted 6996 patents from 6996 XML files in I20250417.tar
+2025/09/04 13:39:59 Moved I20250417.tar back to originals: /mnt/patents/originals/I20250417.tar
+2025/09/04 13:39:59 Worker 4 processing: I20250522.tar
+2025/09/04 13:40:04 Extracted 6434 patents from 6434 XML files in I20250403.tar
+2025/09/04 13:40:04 Moved I20250403.tar back to originals: /mnt/patents/originals/I20250403.tar
+2025/09/04 13:40:04 Worker 5 processing: I20250529.tar
+2025/09/04 13:40:14 Extracted 8671 patents from 8671 XML files in I20250227.tar
+2025/09/04 13:40:14 Moved I20250227.tar back to originals: /mnt/patents/originals/I20250227.tar
+2025/09/04 13:40:14 Worker 0 processing: I20250605.tar
+2025/09/04 13:40:24 Extracted 7982 patents from 7982 XML files in I20250313.tar
+2025/09/04 13:40:24 Moved I20250313.tar back to originals: /mnt/patents/originals/I20250313.tar
+2025/09/04 13:40:24 Worker 2 processing: I20250612.tar
+2025/09/04 13:40:26 ========== STATISTICS ==========
+2025/09/04 13:40:26 Archives processed: 117
+2025/09/04 13:40:26 Patents extracted: 990263
+2025/09/04 13:40:26 Patents inserted: 540285
+2025/09/04 13:40:26 Errors: 0
+2025/09/04 13:40:26 Time elapsed: 0.49 hours
+2025/09/04 13:40:26 Rate: 2012447 patents/hour
+2025/09/04 13:40:26 ================================
+2025/09/04 13:40:27 Current total patents in database: 8100601
+2025/09/04 13:40:27 Successfully inserted 9541 out of 9541 patents
+2025/09/04 13:40:51 Extracted 9220 patents from 9220 XML files in I20250327.tar
+2025/09/04 13:40:51 Moved I20250327.tar back to originals: /mnt/patents/originals/I20250327.tar
+2025/09/04 13:40:51 Worker 1 processing: I20250619.tar
+2025/09/04 13:40:52 Successfully inserted 8484 out of 8484 patents
+2025/09/04 13:40:56 ========== STATISTICS ==========
+2025/09/04 13:40:56 Archives processed: 118
+2025/09/04 13:40:56 Patents extracted: 999483
+2025/09/04 13:40:56 Patents inserted: 558310
+2025/09/04 13:40:56 Errors: 0
+2025/09/04 13:40:56 Time elapsed: 0.50 hours
+2025/09/04 13:40:56 Rate: 1997359 patents/hour
+2025/09/04 13:40:56 ================================
+2025/09/04 13:40:56 Current total patents in database: 8100601
+2025/09/04 13:41:13 Extracted 7175 patents from 7175 XML files in I20250424.tar
+2025/09/04 13:41:13 Moved I20250424.tar back to originals: /mnt/patents/originals/I20250424.tar
+2025/09/04 13:41:13 Worker 6 processing: I20250626.tar
+2025/09/04 13:41:16 Successfully inserted 8328 out of 8328 patents
+2025/09/04 13:41:19 Extracted 8918 patents from 8918 XML files in I20250515.tar
+2025/09/04 13:41:19 Moved I20250515.tar back to originals: /mnt/patents/originals/I20250515.tar
+2025/09/04 13:41:19 Worker 7 processing: I20250703.tar
+2025/09/04 13:41:26 ========== STATISTICS ==========
+2025/09/04 13:41:26 Archives processed: 120
+2025/09/04 13:41:26 Patents extracted: 1015576
+2025/09/04 13:41:26 Patents inserted: 566638
+2025/09/04 13:41:26 Errors: 0
+2025/09/04 13:41:26 Time elapsed: 0.51 hours
+2025/09/04 13:41:26 Rate: 1996274 patents/hour
+2025/09/04 13:41:26 ================================
+2025/09/04 13:41:26 Current total patents in database: 8100601
+2025/09/04 13:41:39 Extracted 9490 patents from 9490 XML files in I20250522.tar
+2025/09/04 13:41:39 Moved I20250522.tar back to originals: /mnt/patents/originals/I20250522.tar
+2025/09/04 13:41:39 Worker 4 processing: I20250710.tar
+2025/09/04 13:41:40 Successfully inserted 7589 out of 7589 patents
+2025/09/04 13:41:51 Extracted 8716 patents from 8716 XML files in I20250508.tar
+2025/09/04 13:41:51 Moved I20250508.tar back to originals: /mnt/patents/originals/I20250508.tar
+2025/09/04 13:41:51 Worker 3 processing: I20250717.tar
+2025/09/04 13:41:56 ========== STATISTICS ==========
+2025/09/04 13:41:56 Archives processed: 122
+2025/09/04 13:41:56 Patents extracted: 1033782
+2025/09/04 13:41:56 Patents inserted: 574227
+2025/09/04 13:41:56 Errors: 0
+2025/09/04 13:41:56 Time elapsed: 0.52 hours
+2025/09/04 13:41:56 Rate: 1999311 patents/hour
+2025/09/04 13:41:56 ================================
+2025/09/04 13:41:56 Current total patents in database: 8100601
+2025/09/04 13:41:59 Extracted 7323 patents from 7323 XML files in I20250529.tar
+2025/09/04 13:41:59 Moved I20250529.tar back to originals: /mnt/patents/originals/I20250529.tar
+2025/09/04 13:41:59 Worker 5 processing: I20250724.tar
+2025/09/04 13:42:05 Extracted 9203 patents from 9203 XML files in I20250612.tar
+2025/09/04 13:42:05 Moved I20250612.tar back to originals: /mnt/patents/originals/I20250612.tar
+2025/09/04 13:42:05 Worker 2 processing: I20250731.tar
+2025/09/04 13:42:08 Successfully inserted 8577 out of 8577 patents
+2025/09/04 13:42:18 Extracted 9424 patents from 9424 XML files in I20250605.tar
+2025/09/04 13:42:19 Moved I20250605.tar back to originals: /mnt/patents/originals/I20250605.tar
+2025/09/04 13:42:19 Worker 0 processing: I20250807.tar
+2025/09/04 13:42:26 ========== STATISTICS ==========
+2025/09/04 13:42:26 Archives processed: 125
+2025/09/04 13:42:26 Patents extracted: 1059732
+2025/09/04 13:42:26 Patents inserted: 582804
+2025/09/04 13:42:26 Errors: 0
+2025/09/04 13:42:26 Time elapsed: 0.53 hours
+2025/09/04 13:42:26 Rate: 2016991 patents/hour
+2025/09/04 13:42:26 ================================
+2025/09/04 13:42:26 Current total patents in database: 8100601
+2025/09/04 13:42:35 Successfully inserted 8612 out of 8612 patents
+2025/09/04 13:42:37 Extracted 10147 patents from 10147 XML files in I20250619.tar
+2025/09/04 13:42:37 Moved I20250619.tar back to originals: /mnt/patents/originals/I20250619.tar
+2025/09/04 13:42:37 Worker 1 processing: I20250814.tar
+2025/09/04 13:42:56 ========== STATISTICS ==========
+2025/09/04 13:42:56 Archives processed: 126
+2025/09/04 13:42:56 Patents extracted: 1069879
+2025/09/04 13:42:56 Patents inserted: 591416
+2025/09/04 13:42:56 Errors: 0
+2025/09/04 13:42:56 Time elapsed: 0.53 hours
+2025/09/04 13:42:56 Rate: 2004511 patents/hour
+2025/09/04 13:42:56 ================================
+2025/09/04 13:42:56 Current total patents in database: 8100601
+2025/09/04 13:43:02 Extracted 8644 patents from 8644 XML files in I20250626.tar
+2025/09/04 13:43:02 Moved I20250626.tar back to originals: /mnt/patents/originals/I20250626.tar
+2025/09/04 13:43:02 Worker 6 processing: I20250821.tar
+2025/09/04 13:43:03 Successfully inserted 9537 out of 9537 patents
+2025/09/04 13:43:09 Extracted 6912 patents from 6912 XML files in I20250717.tar
+2025/09/04 13:43:09 Moved I20250717.tar back to originals: /mnt/patents/originals/I20250717.tar
+2025/09/04 13:43:09 Worker 3 processing: I20250828.tar
+2025/09/04 13:43:10 Extracted 8882 patents from 8882 XML files in I20250703.tar
+2025/09/04 13:43:10 Moved I20250703.tar back to originals: /mnt/patents/originals/I20250703.tar
+2025/09/04 13:43:10 Worker 7 processing: I20250626.tar
+2025/09/04 13:43:10 Worker 7 error processing I20250626.tar: open /mnt/store4/originals/NewFiles/I20250626.tar: no such file or directory
+2025/09/04 13:43:10 Failed to move /mnt/store4/originals/NewFiles/I20250626.tar to originals: rename /mnt/store4/originals/NewFiles/I20250626.tar /mnt/patents/originals/I20250626.tar.1756986190: invalid cross-device link
+2025/09/04 13:43:10 Worker 7 processing: I20250703.tar
+2025/09/04 13:43:10 Worker 7 error processing I20250703.tar: open /mnt/store4/originals/NewFiles/I20250703.tar: no such file or directory
+2025/09/04 13:43:10 Failed to move /mnt/store4/originals/NewFiles/I20250703.tar to originals: rename /mnt/store4/originals/NewFiles/I20250703.tar /mnt/patents/originals/I20250703.tar.1756986190: invalid cross-device link
+2025/09/04 13:43:10 Worker 7 processing: I20250710.tar
+2025/09/04 13:43:11 Extracted 6599 patents from 6599 XML files in I20250724.tar
+2025/09/04 13:43:11 Moved I20250724.tar back to originals: /mnt/patents/originals/I20250724.tar
+2025/09/04 13:43:11 Worker 5 processing: I20250807.tar
+2025/09/04 13:43:15 Extracted 7048 patents from 7048 XML files in I20250710.tar
+2025/09/04 13:43:15 Moved I20250710.tar back to originals: /mnt/patents/originals/I20250710.tar
+2025/09/04 13:43:15 Worker 4 processing: I20250814.tar
+2025/09/04 13:43:26 ========== STATISTICS ==========
+2025/09/04 13:43:26 Archives processed: 133
+2025/09/04 13:43:26 Patents extracted: 1107964
+2025/09/04 13:43:26 Patents inserted: 600953
+2025/09/04 13:43:26 Errors: 2
+2025/09/04 13:43:26 Time elapsed: 0.54 hours
+2025/09/04 13:43:26 Rate: 2043954 patents/hour
+2025/09/04 13:43:26 ================================
+2025/09/04 13:43:26 Current total patents in database: 8100601
+2025/09/04 13:43:29 Successfully inserted 8407 out of 8407 patents
+2025/09/04 13:43:31 Extracted 7324 patents from 7324 XML files in I20250731.tar
+2025/09/04 13:43:31 Moved I20250731.tar back to originals: /mnt/patents/originals/I20250731.tar
+2025/09/04 13:43:53 Successfully inserted 8565 out of 8565 patents
+2025/09/04 13:43:56 ========== STATISTICS ==========
+2025/09/04 13:43:56 Archives processed: 134
+2025/09/04 13:43:56 Patents extracted: 1115288
+2025/09/04 13:43:56 Patents inserted: 617925
+2025/09/04 13:43:56 Errors: 2
+2025/09/04 13:43:56 Time elapsed: 0.55 hours
+2025/09/04 13:43:56 Rate: 2026314 patents/hour
+2025/09/04 13:43:56 ================================
+2025/09/04 13:43:56 Current total patents in database: 8100601
+2025/09/04 13:44:14 Extracted 6798 patents from 6798 XML files in I20250821.tar
+2025/09/04 13:44:14 Moved I20250821.tar back to originals: /mnt/patents/originals/I20250821.tar
+2025/09/04 13:44:15 Extracted 7097 patents from 7097 XML files in I20250807.tar
+2025/09/04 13:44:15 Moved I20250807.tar back to originals: /mnt/patents/originals/I20250807.tar
+2025/09/04 13:44:21 Successfully inserted 9865 out of 9865 patents
+2025/09/04 13:44:24 Extracted 6570 patents from 6570 XML files in I20250814.tar
+2025/09/04 13:44:24 Moved I20250814.tar back to originals: /mnt/patents/originals/I20250814.tar
+2025/09/04 13:44:26 ========== STATISTICS ==========
+2025/09/04 13:44:26 Archives processed: 137
+2025/09/04 13:44:26 Patents extracted: 1135753
+2025/09/04 13:44:26 Patents inserted: 627790
+2025/09/04 13:44:26 Errors: 2
+2025/09/04 13:44:26 Time elapsed: 0.56 hours
+2025/09/04 13:44:26 Rate: 2032719 patents/hour
+2025/09/04 13:44:26 ================================
+2025/09/04 13:44:27 Extracted 7717 patents from 7717 XML files in I20250828.tar
+2025/09/04 13:44:27 Moved I20250828.tar back to originals: /mnt/patents/originals/I20250828.tar
+2025/09/04 13:44:28 Current total patents in database: 8100601
+2025/09/04 13:44:39 Extracted 6570 patents from 6570 XML files in I20250814.tar
+2025/09/04 13:44:39 Failed to move /mnt/store4/originals/NewFiles/I20250814.tar to originals: rename /mnt/store4/originals/NewFiles/I20250814.tar /mnt/patents/originals/I20250814.tar.1756986279: invalid cross-device link
+2025/09/04 13:44:40 Extracted 7097 patents from 7097 XML files in I20250807.tar
+2025/09/04 13:44:40 Failed to move /mnt/store4/originals/NewFiles/I20250807.tar to originals: rename /mnt/store4/originals/NewFiles/I20250807.tar /mnt/patents/originals/I20250807.tar.1756986280: invalid cross-device link
+2025/09/04 13:44:45 Extracted 7048 patents from 7048 XML files in I20250710.tar
+2025/09/04 13:44:45 Failed to move /mnt/store4/originals/NewFiles/I20250710.tar to originals: rename /mnt/store4/originals/NewFiles/I20250710.tar /mnt/patents/originals/I20250710.tar.1756986285: invalid cross-device link
+2025/09/04 13:44:45 
+Extraction Complete!
+2025/09/04 13:44:45 Initial patents: 8100601
+2025/09/04 13:44:45 Final patents: 8100601
+2025/09/04 13:44:45 Patents added: 0
+2025/09/04 13:44:45 ========== STATISTICS ==========
+2025/09/04 13:44:45 Archives processed: 141
+2025/09/04 13:44:45 Patents extracted: 1164185
+2025/09/04 13:44:45 Patents inserted: 627790
+2025/09/04 13:44:45 Errors: 2
+2025/09/04 13:44:45 Time elapsed: 0.56 hours
+2025/09/04 13:44:45 Rate: 2063300 patents/hour
+2025/09/04 13:44:45 ================================

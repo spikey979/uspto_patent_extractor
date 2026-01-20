@@ -1,0 +1,12 @@
+2025/11/27 09:29:34 grant_extractor.go:175: Grant Extractor Starting - Workers: 8, BatchSize: 500
+2025/11/27 09:29:34 grant_extractor.go:190: Database connection established
+2025/11/27 09:29:34 grant_extractor.go:324: Loaded 1 processed archives from log
+2025/11/27 09:29:34 grant_extractor.go:217: Found 48 grant archives
+2025/11/27 09:29:34 grant_extractor.go:404: [Worker 7] Processing: ipg250107.zip
+2025/11/27 09:29:34 grant_extractor.go:404: [Worker 3] Processing: ipg250114.zip
+2025/11/27 09:29:34 grant_extractor.go:404: [Worker 5] Processing: ipg250121.zip
+2025/11/27 09:29:34 grant_extractor.go:404: [Worker 6] Processing: ipg250128.zip
+2025/11/27 09:29:34 grant_extractor.go:404: [Worker 4] Processing: ipg250204.zip
+2025/11/27 09:29:34 grant_extractor.go:404: [Worker 2] Processing: ipg250211.zip
+2025/11/27 09:29:34 grant_extractor.go:404: [Worker 1] Processing: ipg250218.zip
+2025/11/27 09:29:34 grant_extractor.go:404: [Worker 0] Processing: ipg250225.zip

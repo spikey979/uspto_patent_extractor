@@ -1,0 +1,106 @@
+[2025-11-23 14:53:57] Auto-batch with Downloads monitoring starting
+[2025-11-23 14:53:57] Watch dir: /home/mark/Downloads
+[2025-11-23 14:53:57] Stage dir: /mnt/patents/originals/NewFiles
+[2025-11-23 14:53:57] Batch size: 100, Sleep: 60s
+
+[2025-11-23 14:54:47] Auto-batch with Downloads monitoring starting
+[2025-11-23 14:54:47] Watch dir: /home/mark/Downloads
+[2025-11-23 14:54:47] Stage dir: /mnt/patents/originals/NewFiles
+[2025-11-23 14:54:47] Batch size: 100, Sleep: 60s
+
+[2025-11-23 14:54:47] New download detected: I20250904.tar
+[2025-11-23 14:54:49] New download detected: I20250911.tar
+[2025-11-23 14:54:53] New download detected: I20250918.tar
+[2025-11-23 14:54:57] New download detected: I20250925.tar
+[2025-11-23 14:55:00] New download detected: I20251002.tar
+[2025-11-23 14:55:28] New download detected: I20251009.tar
+[2025-11-23 14:55:36] New download detected: I20251016.tar
+[2025-11-23 14:55:49] New download detected: I20251023.tar
+[2025-11-23 14:56:03] New download detected: I20251030.tar
+[2025-11-23 14:56:21] New download detected: I20251106.tar
+[2025-11-23 14:56:33] Launching extractor for 327 files in queue
+[2025-11-23 14:56:33] Started extractor (PID: 400828)
+[2025-11-23 14:57:33] New download detected: I20251113.tar
+[2025-11-23 14:57:38] New download detected: I20251120.tar
+[2025-11-23 14:57:44] Extractor running, waiting...
+[2025-11-23 14:58:44] Extractor running, waiting...
+[2025-11-23 14:59:44] Extractor running, waiting...
+[2025-11-23 15:00:44] Extractor running, waiting...
+[2025-11-23 15:01:44] Extractor running, waiting...
+[2025-11-23 15:02:44] Launching extractor for 319 files in queue
+[2025-11-23 15:02:44] Started extractor (PID: 404865)
+[2025-11-23 15:03:44] Extractor running, waiting...
+[2025-11-23 15:04:44] Extractor running, waiting...
+[2025-11-23 15:05:44] Launching extractor for 317 files in queue
+[2025-11-23 15:05:44] Started extractor (PID: 407113)
+[2025-11-23 15:06:44] Launching extractor for 317 files in queue
+[2025-11-23 15:06:44] Started extractor (PID: 407740)
+[2025-11-23 15:07:44] Launching extractor for 317 files in queue
+[2025-11-23 15:07:44] Started extractor (PID: 408340)
+[2025-11-23 15:08:44] Launching extractor for 317 files in queue
+[2025-11-23 15:08:44] Started extractor (PID: 408962)
+[2025-11-23 15:09:44] Launching extractor for 317 files in queue
+[2025-11-23 15:09:44] Started extractor (PID: 409630)
+[2025-11-23 15:09:57] Auto-batch with Downloads monitoring starting
+[2025-11-23 15:09:57] Watch dir: /home/mark/Downloads
+[2025-11-23 15:09:57] Stage dir: /mnt/patents/originals/NewFiles
+[2025-11-23 15:09:57] Batch size: 100, Sleep: 60s
+
+[2025-11-23 15:09:57] Launching extractor for 317 files in queue
+[2025-11-23 15:09:57] Started extractor (PID: 409761)
+[2025-11-23 15:10:57] Launching extractor for 317 files in queue
+[2025-11-23 15:10:57] Started extractor (PID: 410800)
+[2025-11-23 15:11:57] Launching extractor for 317 files in queue
+[2025-11-23 15:11:57] Started extractor (PID: 411412)
+[2025-11-23 15:12:57] Launching extractor for 317 files in queue
+[2025-11-23 15:12:57] Started extractor (PID: 412106)
+[2025-11-23 15:13:17] Auto-batch with Downloads monitoring starting
+[2025-11-23 15:13:17] Watch dir: /home/mark/Downloads
+[2025-11-23 15:13:17] Stage dir: /mnt/patents/originals/NewFiles
+[2025-11-23 15:13:17] Batch size: 100, Sleep: 60s
+
+[2025-11-23 15:13:17] Launching extractor for 317 files in queue
+[2025-11-23 15:13:17] Started extractor (PID: 412495)
+[2025-11-23 15:14:17] Launching extractor for 317 files in queue
+[2025-11-23 15:14:17] Started extractor (PID: 413110)
+[2025-11-23 15:15:17] Launching extractor for 317 files in queue
+[2025-11-23 15:15:17] Started extractor (PID: 414167)
+[2025-11-23 15:15:53] Auto-batch with Downloads monitoring starting
+[2025-11-23 15:15:53] Watch dir: /home/mark/Downloads
+[2025-11-23 15:15:53] Stage dir: /mnt/patents/originals/NewFiles
+[2025-11-23 15:15:53] Batch size: 100, Sleep: 60s
+
+[2025-11-23 15:15:53] Launching extractor for 317 files in queue
+[2025-11-23 15:15:53] Started extractor (PID: 414494)
+[2025-11-23 15:16:53] Launching extractor for 317 files in queue
+[2025-11-23 15:16:53] Started extractor (PID: 415099)
+[2025-11-23 15:19:03] Auto-batch with Downloads monitoring starting
+[2025-11-23 15:19:03] Watch dir: /home/mark/Downloads
+[2025-11-23 15:19:03] Stage dir: /mnt/patents/originals/NewFiles
+[2025-11-23 15:19:03] Batch size: 100, Sleep: 60s
+
+[2025-11-23 15:19:03] Launching extractor for 317 files in queue
+[2025-11-23 15:19:03] Started extractor (PID: 416424)
+[2025-11-23 15:20:03] Launching extractor for 317 files in queue
+[2025-11-23 15:20:03] Started extractor (PID: 417307)
+[2025-11-23 15:21:03] Launching extractor for 317 files in queue
+[2025-11-23 15:21:03] Started extractor (PID: 418075)
+[2025-11-23 15:37:48] Auto-batch with Downloads monitoring starting
+[2025-11-23 15:37:48] Watch dir: /home/mark/Downloads
+[2025-11-23 15:37:48] Stage dir: /mnt/patents/originals/NewFiles
+[2025-11-23 15:37:48] Batch size: 100, Sleep: 60s
+
+[2025-11-23 15:37:48] Launching extractor for 317 files in queue
+[2025-11-23 15:37:48] Started extractor (PID: 429929)
+[2025-11-23 15:38:48] Launching extractor for 317 files in queue
+[2025-11-23 15:38:48] Started extractor (PID: 430543)
+[2025-11-23 15:43:02] Auto-batch with Downloads monitoring starting
+[2025-11-23 15:43:02] Watch dir: /home/mark/Downloads
+[2025-11-23 15:43:02] Stage dir: /mnt/patents/originals/NewFiles
+[2025-11-23 15:43:02] Batch size: 100, Sleep: 60s
+
+[2025-11-23 15:43:02] Launching extractor for 317 files in queue
+[2025-11-23 15:43:02] Started extractor (PID: 433697)
+[2025-11-23 15:44:02] Queue empty, staging next batch...
+[2025-11-23 15:44:11] Staged 0 archives from originals
+[2025-11-23 15:44:11] All archives completed and no pending downloads. Exiting.

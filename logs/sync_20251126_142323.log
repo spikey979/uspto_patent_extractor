@@ -1,0 +1,224 @@
+[1;33m[WARNING][0m DRY-RUN MODE - No files will be modified
+[0;34m[INFO][0m Smart Bidirectional Patent Data Sync
+[0;34m[INFO][0m Remote: sftp://u506059.your-storagebox.de/uspto_downloads/
+[0;34m[INFO][0m Local:  /mnt/patents/data/
+[0;34m[INFO][0m Log:    /home/mark/projects/patent_extractor/logs/sync_20251126_142323.log
+[0;34m[INFO][0m Years to sync: 2024 2025
+[0;36m[STEP][0m Syncing year 2024...
+Connected to u506059.your-storagebox.de.
+sftp> mkdir uspto_downloads 2>/dev/null
+remote mkdir "/home/uspto_downloads": Failure
+sftp> mkdir uspto_downloads/2024 2>/dev/null
+remote mkdir "/home/uspto_downloads/2024": Failure
+sftp> quit
+[0;34m[INFO][0m   Pulling from remote → local (year 2024)...
+receiving incremental file list
+./
+I20240104.tar
+I20240104_r1.tar
+I20240111.tar
+I20240111_r1.tar
+I20240118.tar
+I20240118_r1.tar
+I20240125.tar
+I20240125_r1.tar
+I20240201.tar
+I20240201_r1.tar
+I20240208.tar
+I20240208_r1.tar
+I20240215.tar
+I20240222.tar
+I20240229.tar
+I20240307.tar
+I20240314.tar
+I20240321.tar
+I20240328.tar
+I20240404.tar
+I20240411.tar
+I20240418.tar
+I20240425.tar
+I20240502.tar
+I20240509.tar
+I20240516.tar
+I20240523.tar
+I20240530.tar
+I20240606.tar
+I20240613.tar
+I20240620.tar
+I20240627.tar
+I20240704.tar
+I20240711.tar
+I20240718.tar
+I20240725.tar
+I20240801.tar
+I20240808.tar
+I20240815.tar
+I20240822.tar
+I20240829.tar
+I20240905.tar
+I20240912.tar
+I20240919.tar
+I20240926.tar
+I20241003.tar
+I20241010.tar
+I20241017.tar
+I20241024.tar
+I20241031.tar
+I20241107.tar
+I20241114.tar
+I20241121.tar
+I20241128.tar
+I20241205.tar
+I20241212.tar
+I20241219.tar
+I20241226.tar
+.DAV/
+.DAV/I20240711.tar
+.DAV/I20240718.tar
+
+sent 211 bytes  received 1.83K bytes  1.36K bytes/sec
+total size is 299.34G  speedup is 146,951,881.83 (DRY RUN)
+[0;32m[SUCCESS][0m   Pull completed for 2024
+[0;34m[INFO][0m   Pushing from local → remote (year 2024)...
+sending incremental file list
+
+sent 53 bytes  received 12 bytes  43.33 bytes/sec
+total size is 0  speedup is 0.00 (DRY RUN)
+sending incremental file list
+./
+
+sent 54 bytes  received 19 bytes  146.00 bytes/sec
+total size is 0  speedup is 0.00 (DRY RUN)
+sending incremental file list
+
+sent 53 bytes  received 12 bytes  43.33 bytes/sec
+total size is 0  speedup is 0.00 (DRY RUN)
+[0;32m[SUCCESS][0m   Push completed for 2024
+[0;36m[STEP][0m Syncing year 2025...
+Connected to u506059.your-storagebox.de.
+sftp> mkdir uspto_downloads 2>/dev/null
+remote mkdir "/home/uspto_downloads": Failure
+sftp> mkdir uspto_downloads/2025 2>/dev/null
+remote mkdir "/home/uspto_downloads/2025": Failure
+sftp> quit
+[0;34m[INFO][0m   Pulling from remote → local (year 2025)...
+receiving incremental file list
+./
+bdr_oa_bulkdata_weekly_2025-01-05.zip
+bdr_oa_bulkdata_weekly_2025-01-12.zip
+bdr_oa_bulkdata_weekly_2025-01-19.zip
+bdr_oa_bulkdata_weekly_2025-01-26.zip
+bdr_oa_bulkdata_weekly_2025-02-02.zip
+bdr_oa_bulkdata_weekly_2025-02-09.zip
+bdr_oa_bulkdata_weekly_2025-02-16.zip
+bdr_oa_bulkdata_weekly_2025-02-23.zip
+bdr_oa_bulkdata_weekly_2025-03-02.zip
+bdr_oa_bulkdata_weekly_2025-03-09.zip
+bdr_oa_bulkdata_weekly_2025-03-16.zip
+bdr_oa_bulkdata_weekly_2025-03-23.zip
+bdr_oa_bulkdata_weekly_2025-03-30.zip
+bdr_oa_bulkdata_weekly_2025-04-06.zip
+bdr_oa_bulkdata_weekly_2025-04-13.zip
+bdr_oa_bulkdata_weekly_2025-04-20.zip
+bdr_oa_bulkdata_weekly_2025-04-27.zip
+bdr_oa_bulkdata_weekly_2025-05-04.zip
+bdr_oa_bulkdata_weekly_2025-05-11.zip
+bdr_oa_bulkdata_weekly_2025-05-18.zip
+bdr_oa_bulkdata_weekly_2025-05-25.zip
+bdr_oa_bulkdata_weekly_2025-06-01.zip
+bdr_oa_bulkdata_weekly_2025-06-08.zip
+bdr_oa_bulkdata_weekly_2025-06-15.zip
+bdr_oa_bulkdata_weekly_2025-06-22.zip
+bdr_oa_bulkdata_weekly_2025-06-29.zip
+bdr_oa_bulkdata_weekly_2025-07-06.zip
+bdr_oa_bulkdata_weekly_2025-07-13.zip
+bdr_oa_bulkdata_weekly_2025-07-20.zip
+bdr_oa_bulkdata_weekly_2025-07-27.zip
+bdr_oa_bulkdata_weekly_2025-08-03.zip
+bdr_oa_bulkdata_weekly_2025-08-10.zip
+bdr_oa_bulkdata_weekly_2025-08-17.zip
+bdr_oa_bulkdata_weekly_2025-08-24.zip
+bdr_oa_bulkdata_weekly_2025-08-31.zip
+bdr_oa_bulkdata_weekly_2025-09-07.zip
+bdr_oa_bulkdata_weekly_2025-09-14.zip
+bdr_oa_bulkdata_weekly_2025-09-21.zip
+bdr_oa_bulkdata_weekly_2025-09-28.zip
+bdr_oa_bulkdata_weekly_2025-10-05.zip
+bdr_oa_bulkdata_weekly_2025-10-12.zip
+bdr_oa_bulkdata_weekly_2025-10-19.zip
+bdr_oa_bulkdata_weekly_2025-10-26.zip
+bdr_oa_bulkdata_weekly_2025-11-02.zip
+bdr_oa_bulkdata_weekly_2025-11-09.zip
+bdr_oa_bulkdata_weekly_2025-11-16.zip
+grant_pdf_20251118.tar
+ipg250107.zip
+ipg250114.zip
+ipg250121.zip
+ipg250128.zip
+ipg250204.zip
+ipg250211.zip
+ipg250218.zip
+ipg250225.zip
+ipg250304.zip
+ipg250311.zip
+ipg250318.zip
+ipg250325.zip
+ipg250401.zip
+ipg250408.zip
+ipg250415.zip
+ipg250422.zip
+ipg250429.zip
+ipg250506.zip
+ipg250513.zip
+ipg250520.zip
+ipg250520_r1.zip
+ipg250527.zip
+ipg250603.zip
+ipg250610.zip
+ipg250617.zip
+ipg250624.zip
+ipg250701.zip
+ipg250708.zip
+ipg250715.zip
+ipg250722.zip
+ipg250729.zip
+ipg250805.zip
+ipg250812.zip
+ipg250819.zip
+ipg250826.zip
+ipg250902.zip
+ipg250909.zip
+ipg250916.zip
+ipg250923.zip
+ipg250930.zip
+ipg250930_r1.zip
+ipg251007.zip
+ipg251014.zip
+ipg251021.zip
+ipg251028.zip
+ipg251104.zip
+ipg251111.zip
+ipg251118.zip
+
+sent 312 bytes  received 3.88K bytes  8.38K bytes/sec
+total size is 24.54G  speedup is 5,856,472.25 (DRY RUN)
+[0;32m[SUCCESS][0m   Pull completed for 2025
+[0;34m[INFO][0m   Pushing from local → remote (year 2025)...
+sending incremental file list
+./
+
+sent 1.15K bytes  received 19 bytes  782.00 bytes/sec
+total size is 7.20G  speedup is 6,141,410.17 (DRY RUN)
+sending incremental file list
+./
+
+sent 56 bytes  received 19 bytes  50.00 bytes/sec
+total size is 0  speedup is 0.00 (DRY RUN)
+sending incremental file list
+
+sent 1.11K bytes  received 12 bytes  2.25K bytes/sec
+total size is 3.77G  speedup is 3,348,689.62 (DRY RUN)
+[0;32m[SUCCESS][0m   Push completed for 2025
+[0;36m[STEP][0m Sync Summary
+[0;34m[INFO][0m ==== Local File Counts ====
+[1;33m[WARNING][0m DRY-RUN completed - no files were modified

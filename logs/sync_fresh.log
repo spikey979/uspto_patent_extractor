@@ -1,0 +1,181 @@
+[0;34m[INFO][0m LIVE MODE - Files will be synced
+
+==========================================
+[0;34m[INFO][0m Smart Bidirectional Patent Data Sync
+==========================================
+[0;34m[INFO][0m Remote: sftp://u506059.your-storagebox.de/uspto_downloads/
+[0;34m[INFO][0m Local:  /mnt/patents/data/
+[0;34m[INFO][0m Log:    /home/mark/projects/patent_extractor/logs/sync_20251127_195943.log
+
+[0;34m[INFO][0m Years to sync: 2024 2025
+
+[0;36m[STEP][0m Syncing year 2024...
+[0;34m[INFO][0m   Pulling from remote → local (year 2024)...
+[0;34m[INFO][0m     → I-TAR: I20240104_r1.tar
+[0;34m[INFO][0m     → I-TAR: I20240104.tar
+[0;34m[INFO][0m     → I-TAR: I20240111_r1.tar
+[0;34m[INFO][0m     → I-TAR: I20240111.tar
+[0;34m[INFO][0m     → I-TAR: I20240118_r1.tar
+[0;34m[INFO][0m     → I-TAR: I20240118.tar
+[0;34m[INFO][0m     → I-TAR: I20240125_r1.tar
+[0;34m[INFO][0m     → I-TAR: I20240125.tar
+[0;34m[INFO][0m     → I-TAR: I20240201_r1.tar
+[0;34m[INFO][0m     → I-TAR: I20240201.tar
+[0;34m[INFO][0m     → I-TAR: I20240208_r1.tar
+[0;34m[INFO][0m     → I-TAR: I20240208.tar
+[0;34m[INFO][0m     → I-TAR: I20240215.tar
+[0;34m[INFO][0m     → I-TAR: I20240222.tar
+[0;34m[INFO][0m     → I-TAR: I20240229.tar
+[0;34m[INFO][0m     → I-TAR: I20240307.tar
+[0;34m[INFO][0m     → I-TAR: I20240314.tar
+[0;34m[INFO][0m     → I-TAR: I20240321.tar
+[0;34m[INFO][0m     → I-TAR: I20240328.tar
+[0;34m[INFO][0m     → I-TAR: I20240404.tar
+[0;34m[INFO][0m     → I-TAR: I20240411.tar
+[0;34m[INFO][0m     → I-TAR: I20240418.tar
+[0;34m[INFO][0m     → I-TAR: I20240425.tar
+[0;34m[INFO][0m     → I-TAR: I20240502.tar
+[0;34m[INFO][0m     → I-TAR: I20240509.tar
+[0;34m[INFO][0m     → I-TAR: I20240516.tar
+[0;34m[INFO][0m     → I-TAR: I20240523.tar
+[0;34m[INFO][0m     → I-TAR: I20240530.tar
+[0;34m[INFO][0m     → I-TAR: I20240606.tar
+[0;34m[INFO][0m     → I-TAR: I20240613.tar
+[0;34m[INFO][0m     → I-TAR: I20240620.tar
+[0;34m[INFO][0m     → I-TAR: I20240627.tar
+[0;34m[INFO][0m     → I-TAR: I20240704.tar
+[0;34m[INFO][0m     → I-TAR: I20240711.tar
+[0;34m[INFO][0m     → I-TAR: I20240718.tar
+[0;34m[INFO][0m     → I-TAR: I20240725.tar
+[0;34m[INFO][0m     → I-TAR: I20240801.tar
+[0;34m[INFO][0m     → I-TAR: I20240808.tar
+[0;34m[INFO][0m     → I-TAR: I20240815.tar
+[0;34m[INFO][0m     → I-TAR: I20240822.tar
+[0;34m[INFO][0m     → I-TAR: I20240829.tar
+[0;34m[INFO][0m     → I-TAR: I20240905.tar
+[0;34m[INFO][0m     → I-TAR: I20240912.tar
+[0;34m[INFO][0m     → I-TAR: I20240919.tar
+[0;34m[INFO][0m     → I-TAR: I20240926.tar
+[0;34m[INFO][0m     → I-TAR: I20241003.tar
+[0;34m[INFO][0m     → I-TAR: I20241010.tar
+[0;34m[INFO][0m     → I-TAR: I20241017.tar
+[0;34m[INFO][0m     → I-TAR: I20241024.tar
+[0;34m[INFO][0m     → I-TAR: I20241031.tar
+[0;31m[ERROR][0m   Pull failed for 2024 (error code: 11)
+
+[0;34m[INFO][0m   Pushing from local → remote (year 2024)...
+[0;32m[SUCCESS][0m   Push completed for 2024
+
+[0;36m[STEP][0m Syncing year 2025...
+[0;34m[INFO][0m   Pulling from remote → local (year 2025)...
+[0;34m[INFO][0m     → IPG: ipg250107.zip
+[0;34m[INFO][0m     → IPG: ipg250114.zip
+[0;34m[INFO][0m     → IPG: ipg250121.zip
+[0;34m[INFO][0m     → IPG: ipg250128.zip
+[0;34m[INFO][0m     → IPG: ipg250204.zip
+[0;34m[INFO][0m     → IPG: ipg250211.zip
+[0;34m[INFO][0m     → IPG: ipg250218.zip
+[0;34m[INFO][0m     → IPG: ipg250225.zip
+[0;34m[INFO][0m     → IPG: ipg250304.zip
+[0;34m[INFO][0m     → IPG: ipg250311.zip
+[0;34m[INFO][0m     → IPG: ipg250318.zip
+[0;34m[INFO][0m     → IPG: ipg250325.zip
+[0;34m[INFO][0m     → IPG: ipg250401.zip
+[0;34m[INFO][0m     → IPG: ipg250408.zip
+[0;34m[INFO][0m     → IPG: ipg250415.zip
+[0;34m[INFO][0m     → IPG: ipg250422.zip
+[0;34m[INFO][0m     → IPG: ipg250429.zip
+[0;34m[INFO][0m     → IPG: ipg250506.zip
+[0;34m[INFO][0m     → IPG: ipg250513.zip
+[0;34m[INFO][0m     → IPG: ipg250520_r1.zip
+[0;34m[INFO][0m     → IPG: ipg250520.zip
+[0;34m[INFO][0m     → IPG: ipg250527.zip
+[0;34m[INFO][0m     → IPG: ipg250603.zip
+[0;34m[INFO][0m     → IPG: ipg250610.zip
+[0;34m[INFO][0m     → IPG: ipg250617.zip
+[0;34m[INFO][0m     → IPG: ipg250624.zip
+[0;34m[INFO][0m     → IPG: ipg250701.zip
+[0;34m[INFO][0m     → IPG: ipg250708.zip
+[0;34m[INFO][0m     → IPG: ipg250715.zip
+[0;34m[INFO][0m     → IPG: ipg250722.zip
+[0;34m[INFO][0m     → IPG: ipg250729.zip
+[0;34m[INFO][0m     → IPG: ipg250805.zip
+[0;34m[INFO][0m     → IPG: ipg250812.zip
+[0;34m[INFO][0m     → IPG: ipg250819.zip
+[0;34m[INFO][0m     → IPG: ipg250826.zip
+[0;34m[INFO][0m     → IPG: ipg250902.zip
+[0;34m[INFO][0m     → IPG: ipg250909.zip
+[0;34m[INFO][0m     → IPG: ipg250916.zip
+[0;34m[INFO][0m     → IPG: ipg250923.zip
+[0;34m[INFO][0m     → IPG: ipg250930_r1.zip
+[0;34m[INFO][0m     → IPG: ipg250930.zip
+[0;34m[INFO][0m     → IPG: ipg251007.zip
+[0;34m[INFO][0m     → IPG: ipg251014.zip
+[0;34m[INFO][0m     → IPG: ipg251021.zip
+[0;34m[INFO][0m     → IPG: ipg251028.zip
+[0;34m[INFO][0m     → IPG: ipg251104.zip
+[0;34m[INFO][0m     → IPG: ipg251111.zip
+[0;34m[INFO][0m     → IPG: ipg251118.zip
+[0;34m[INFO][0m     → Skipped Grant PDF: grant_pdf_20251118.tar (redundant)
+[0;34m[INFO][0m     → BDR: bdr_oa_bulkdata_weekly_2025-01-05.zip
+[0;34m[INFO][0m     → BDR: bdr_oa_bulkdata_weekly_2025-01-12.zip
+[0;34m[INFO][0m     → BDR: bdr_oa_bulkdata_weekly_2025-01-19.zip
+[0;34m[INFO][0m     → BDR: bdr_oa_bulkdata_weekly_2025-01-26.zip
+[0;34m[INFO][0m     → BDR: bdr_oa_bulkdata_weekly_2025-02-02.zip
+[0;34m[INFO][0m     → BDR: bdr_oa_bulkdata_weekly_2025-02-09.zip
+[0;34m[INFO][0m     → BDR: bdr_oa_bulkdata_weekly_2025-02-16.zip
+[0;34m[INFO][0m     → BDR: bdr_oa_bulkdata_weekly_2025-02-23.zip
+[0;34m[INFO][0m     → BDR: bdr_oa_bulkdata_weekly_2025-03-02.zip
+[0;34m[INFO][0m     → BDR: bdr_oa_bulkdata_weekly_2025-03-09.zip
+[0;34m[INFO][0m     → BDR: bdr_oa_bulkdata_weekly_2025-03-16.zip
+[0;34m[INFO][0m     → BDR: bdr_oa_bulkdata_weekly_2025-03-23.zip
+[0;34m[INFO][0m     → BDR: bdr_oa_bulkdata_weekly_2025-03-30.zip
+[0;34m[INFO][0m     → BDR: bdr_oa_bulkdata_weekly_2025-04-06.zip
+[0;34m[INFO][0m     → BDR: bdr_oa_bulkdata_weekly_2025-04-13.zip
+[0;34m[INFO][0m     → BDR: bdr_oa_bulkdata_weekly_2025-04-20.zip
+[0;34m[INFO][0m     → BDR: bdr_oa_bulkdata_weekly_2025-04-27.zip
+[0;34m[INFO][0m     → BDR: bdr_oa_bulkdata_weekly_2025-05-04.zip
+[0;34m[INFO][0m     → BDR: bdr_oa_bulkdata_weekly_2025-05-11.zip
+[0;34m[INFO][0m     → BDR: bdr_oa_bulkdata_weekly_2025-05-18.zip
+[0;34m[INFO][0m     → BDR: bdr_oa_bulkdata_weekly_2025-05-25.zip
+[0;34m[INFO][0m     → BDR: bdr_oa_bulkdata_weekly_2025-06-01.zip
+[0;34m[INFO][0m     → BDR: bdr_oa_bulkdata_weekly_2025-06-08.zip
+[0;34m[INFO][0m     → BDR: bdr_oa_bulkdata_weekly_2025-06-15.zip
+[0;34m[INFO][0m     → BDR: bdr_oa_bulkdata_weekly_2025-06-22.zip
+[0;34m[INFO][0m     → BDR: bdr_oa_bulkdata_weekly_2025-06-29.zip
+[0;34m[INFO][0m     → BDR: bdr_oa_bulkdata_weekly_2025-07-06.zip
+[0;34m[INFO][0m     → BDR: bdr_oa_bulkdata_weekly_2025-07-13.zip
+[0;34m[INFO][0m     → BDR: bdr_oa_bulkdata_weekly_2025-07-20.zip
+[0;34m[INFO][0m     → BDR: bdr_oa_bulkdata_weekly_2025-07-27.zip
+[0;34m[INFO][0m     → BDR: bdr_oa_bulkdata_weekly_2025-08-03.zip
+[0;34m[INFO][0m     → BDR: bdr_oa_bulkdata_weekly_2025-08-10.zip
+[0;34m[INFO][0m     → BDR: bdr_oa_bulkdata_weekly_2025-08-17.zip
+[0;34m[INFO][0m     → BDR: bdr_oa_bulkdata_weekly_2025-08-24.zip
+[0;34m[INFO][0m     → BDR: bdr_oa_bulkdata_weekly_2025-08-31.zip
+[0;34m[INFO][0m     → BDR: bdr_oa_bulkdata_weekly_2025-09-07.zip
+[0;34m[INFO][0m     → BDR: bdr_oa_bulkdata_weekly_2025-09-14.zip
+[0;34m[INFO][0m     → BDR: bdr_oa_bulkdata_weekly_2025-09-21.zip
+[0;34m[INFO][0m     → BDR: bdr_oa_bulkdata_weekly_2025-09-28.zip
+[0;34m[INFO][0m     → BDR: bdr_oa_bulkdata_weekly_2025-10-05.zip
+[0;34m[INFO][0m     → BDR: bdr_oa_bulkdata_weekly_2025-10-12.zip
+[0;34m[INFO][0m     → BDR: bdr_oa_bulkdata_weekly_2025-10-19.zip
+[0;34m[INFO][0m     → BDR: bdr_oa_bulkdata_weekly_2025-10-26.zip
+[0;34m[INFO][0m     → BDR: bdr_oa_bulkdata_weekly_2025-11-02.zip
+[0;34m[INFO][0m     → BDR: bdr_oa_bulkdata_weekly_2025-11-09.zip
+[0;34m[INFO][0m     → BDR: bdr_oa_bulkdata_weekly_2025-11-16.zip
+[0;32m[SUCCESS][0m   Pull completed for 2025
+
+[0;34m[INFO][0m   Pushing from local → remote (year 2025)...
+[0;32m[SUCCESS][0m   Push completed for 2025
+
+
+[0;36m[STEP][0m Sync Summary
+
+[0;34m[INFO][0m ==== Local File Counts ====
+  2024: IPG=0, I-TAR=50, BDR=0
+  2025: IPG=48, I-TAR=0, BDR=46
+
+==========================================
+[0;32m[SUCCESS][0m Sync completed!
+==========================================
+

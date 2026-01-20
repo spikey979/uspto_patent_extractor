@@ -1,0 +1,9 @@
+psql:/home/mark/projects/patent_extractor/sql_claims_backfill.sql:3: NOTICE:  column "claims_text" of relation "patent_data_unified" already exists, skipping
+ALTER TABLE
+psql:/home/mark/projects/patent_extractor/sql_claims_backfill.sql:7: NOTICE:  column "description_body" of relation "patent_data_unified" already exists, skipping
+ALTER TABLE
+UPDATE 0
+UPDATE 8069117
+UPDATE 0
+psql:/home/mark/projects/patent_extractor/sql_claims_backfill.sql:38: NOTICE:  relation "patent_data_unified_claims_present_idx" already exists, skipping
+CREATE INDEX
