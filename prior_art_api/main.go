@@ -20,6 +20,14 @@ func main() {
 	// Setup HTTP routes
 	http.HandleFunc("/", handleRoot)
 	http.HandleFunc("/health", handleHealth)
+
+	// Figure description endpoints (must be registered before the catch-all)
+	http.HandleFunc("GET /api/patent/{pub}/figures/{num}/image", handleFigureImage)
+	http.HandleFunc("GET /api/patent/{pub}/figures/{num}/descriptions", handleGetFigureVersions)
+	http.HandleFunc("GET /api/patent/{pub}/figures/descriptions", handleGetFigureDescriptions)
+	http.HandleFunc("POST /api/patent/{pub}/figures/descriptions", handleSaveFigureDescriptions)
+
+	// Patent document endpoint (catch-all for /api/patent/{pub})
 	http.HandleFunc("/api/patent/", handleGetPatent)
 
 	// Start server

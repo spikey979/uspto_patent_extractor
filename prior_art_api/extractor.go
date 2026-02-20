@@ -141,3 +141,50 @@ func readZIPFile(file *zip.File) ([]byte, error) {
 
 	return io.ReadAll(rc)
 }
+
+// extractTIFFromArchive extracts a specific TIF file's bytes from the archive
+func extractTIFFromArchive(lookup *PatentLookup, figureNum int) ([]byte, string, error) {
+	if lookup.RawXMLPath == "" {
+		return nil, "", fmt.Errorf("no raw_xml_path in database")
+	}
+
+	parts := strings.Split(lookup.RawXMLPath, "/")
+	if len(parts) < 2 {
+		return nil, "", fmt.Errorf("invalid raw_xml_path format: %s", lookup.RawXMLPath)
+	}
+
+	tarFilename := parts[0]
+	patentDir := parts[1]
+	tarPath := filepath.Join(cfg.ArchiveBase, strconv.Itoa(lookup.Year), tarFilename)
+
+	if _, err := os.Stat(tarPath); os.IsNotExist(err) {
+		return nil, "", fmt.Errorf("TAR file not found: %s", tarPath)
+	}
+
+	// Extract ZIP from TAR
+	zipData, _, err := extractZIPFromTAR(tarPath, patentDir)
+	if err != nil {
+		return nil, "", err
+	}
+
+	// Find TIF in ZIP matching the figure number pattern (D00001, D00002, etc.)
+	tifPattern := fmt.Sprintf("D%05d.TIF", figureNum)
+
+	zipReader, err := zip.NewReader(bytes.NewReader(zipData), int64(len(zipData)))
+	if err != nil {
+		return nil, "", fmt.Errorf("error opening ZIP: %w", err)
+	}
+
+	for _, file := range zipReader.File {
+		filename := filepath.Base(file.Name)
+		if strings.HasSuffix(strings.ToUpper(filename), tifPattern) {
+			data, err := readZIPFile(file)
+			if err != nil {
+				return nil, "", fmt.Errorf("error reading TIF: %w", err)
+			}
+			return data, filename, nil
+		}
+	}
+
+	return nil, "", fmt.Errorf("figure %d (pattern *%s) not found in archive", figureNum, tifPattern)
+}

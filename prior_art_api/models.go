@@ -264,3 +264,56 @@ type SourceInfo struct {
 	Archive string `json:"archive"`
 	XMLPath string `json:"xml_path"`
 }
+
+// ============================================================================
+// Figure Description Models
+// ============================================================================
+
+// FigureDescriptionInput represents a single figure description from fileApi
+type FigureDescriptionInput struct {
+	FigureNum  int    `json:"figure_num"`
+	FigureFile string `json:"figure_file,omitempty"`
+	Desc       string `json:"description"`
+	Model      string `json:"model,omitempty"`
+	PromptHash string `json:"prompt_hash,omitempty"`
+}
+
+// SaveFigureDescriptionsRequest is the POST request body
+type SaveFigureDescriptionsRequest struct {
+	Figures []FigureDescriptionInput `json:"figures"`
+}
+
+// FigureDescriptionRecord represents a stored description from the database
+type FigureDescriptionRecord struct {
+	ID         int    `json:"id"`
+	PubNumber  string `json:"pub_number"`
+	FigureNum  int    `json:"figure_num"`
+	FigureFile string `json:"figure_file,omitempty"`
+	Desc       string `json:"description"`
+	Model      string `json:"model,omitempty"`
+	PromptHash string `json:"prompt_hash,omitempty"`
+	Version    int    `json:"version"`
+	CreatedAt  string `json:"created_at"`
+}
+
+// SavedVersion tracks which version was created for each figure
+type SavedVersion struct {
+	FigureNum int `json:"figure_num"`
+	Version   int `json:"version"`
+}
+
+// SaveFigureDescriptionsResponse is the POST response
+type SaveFigureDescriptionsResponse struct {
+	Success  bool           `json:"success"`
+	Saved    int            `json:"saved"`
+	Versions []SavedVersion `json:"versions"`
+	Error    string         `json:"error,omitempty"`
+}
+
+// FigureDescriptionsResponse is the GET response for descriptions
+type FigureDescriptionsResponse struct {
+	Success   bool                      `json:"success"`
+	PubNumber string                    `json:"pub_number"`
+	Figures   []FigureDescriptionRecord `json:"figures"`
+	Error     string                    `json:"error,omitempty"`
+}

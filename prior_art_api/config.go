@@ -23,7 +23,7 @@ var cfg = Config{
 	DBName:      getEnv("DB_NAME", "companies_db"),
 	DBUser:      getEnv("DB_USER", "mark"),
 	DBPassword:  getEnv("DB_PASSWORD", "mark123"),
-	ServerPort:  getEnvInt("SERVER_PORT", 8095),
+	ServerPort:  getEnvInt("SERVER_PORT", 8096),
 	ArchiveBase: getEnv("ARCHIVE_BASE", "/mnt/patents/data/historical"),
 }
 
