@@ -240,10 +240,11 @@ type RelatedApp struct {
 
 // DrawingInfo holds drawing/figure information
 type DrawingInfo struct {
-	Num  int    `json:"num"`
-	ID   string `json:"id"`
-	File string `json:"file"`
-	Path string `json:"path"`
+	Num         int    `json:"num"`
+	ID          string `json:"id"`
+	File        string `json:"file"`
+	Path        string `json:"path"`
+	Description string `json:"description,omitempty"`
 }
 
 // DescPara holds description paragraph information

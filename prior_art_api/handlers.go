@@ -86,11 +86,38 @@ func handleGetPatent(w http.ResponseWriter, r *http.Request) {
 
 	log.Printf("Successfully built document: %s - %s", doc.PubNumber, doc.Title)
 
+	// Enrich drawings with stored descriptions
+	enrichDrawingsWithDescriptions(doc)
+
 	// Send success response
 	json.NewEncoder(w).Encode(APIResponse{
 		Success: true,
 		Patent:  doc,
 	})
+}
+
+// enrichDrawingsWithDescriptions adds stored LLM descriptions to drawing entries
+func enrichDrawingsWithDescriptions(doc *PatentDoc) {
+	if len(doc.Drawings) == 0 {
+		return
+	}
+
+	records, err := getLatestFigureDescriptions(doc.PubNumber)
+	if err != nil || len(records) == 0 {
+		return
+	}
+
+	// Build map: figure_num -> description
+	descMap := make(map[int]string, len(records))
+	for _, r := range records {
+		descMap[r.FigureNum] = r.Desc
+	}
+
+	for i := range doc.Drawings {
+		if desc, ok := descMap[doc.Drawings[i].Num]; ok {
+			doc.Drawings[i].Description = desc
+		}
+	}
 }
 
 // sendError sends an error response
