@@ -21,11 +21,13 @@ func handleRoot(w http.ResponseWriter, r *http.Request) {
 		"service": "Prior Art API",
 		"version": "2.0.0",
 		"endpoints": map[string]string{
-			"GET /api/patent/{pub}":                        "Get full patent document as JSON",
-			"GET /api/patent/{pub}/figures/{num}/image":    "Get figure image as PNG (or ?format=tif)",
-			"POST /api/patent/{pub}/figures/descriptions":  "Save figure descriptions (from fileApi)",
-			"GET /api/patent/{pub}/figures/descriptions":   "Get latest figure descriptions",
-			"GET /api/patent/{pub}/figures/{num}/descriptions": "Get all versions of a figure description",
+			"GET /api/patent/{pub}":                              "Get full patent document as JSON",
+			"GET /api/patent/{pub}/figures/{num}/image":          "Get figure image as PNG (or ?format=tif)",
+			"POST /api/patent/{pub}/figures/descriptions":        "Save figure descriptions (from fileApi)",
+			"GET /api/patent/{pub}/figures/descriptions":         "Get latest figure descriptions",
+			"GET /api/patent/{pub}/figures/{num}/descriptions":   "Get all versions of a figure description",
+			"GET /api/patent/{pub}/figures/descriptions/status":  "Check if descriptions exist, version summary",
+			"DELETE /api/patent/{pub}/figures/descriptions":      "Delete all figure descriptions for a patent",
 			"GET /health": "Health check",
 		},
 		"examples": []string{
@@ -259,6 +261,60 @@ func handleGetFigureDescriptions(w http.ResponseWriter, r *http.Request) {
 		Success:   true,
 		PubNumber: normalized,
 		Figures:   records,
+	})
+}
+
+// handleFigureDescriptionStatus returns a summary of stored descriptions for a patent (GET)
+func handleFigureDescriptionStatus(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+
+	pubNumber := r.PathValue("pub")
+	normalized := normalizePubNumber(pubNumber)
+
+	summaries, totalVersions, err := getFigureDescriptionStatus(normalized)
+	if err != nil {
+		json.NewEncoder(w).Encode(FigureStatusResponse{
+			Success: false, Error: fmt.Sprintf("Query error: %v", err),
+		})
+		return
+	}
+
+	if summaries == nil {
+		summaries = []FigureStatusSummary{}
+	}
+
+	json.NewEncoder(w).Encode(FigureStatusResponse{
+		Success:         true,
+		PubNumber:       normalized,
+		HasDescriptions: len(summaries) > 0,
+		TotalFigures:    len(summaries),
+		TotalVersions:   totalVersions,
+		Figures:         summaries,
+	})
+}
+
+// handleDeleteFigureDescriptions removes all figure descriptions for a patent (DELETE)
+func handleDeleteFigureDescriptions(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+
+	pubNumber := r.PathValue("pub")
+	normalized := normalizePubNumber(pubNumber)
+
+	deleted, err := deleteFigureDescriptions(normalized)
+	if err != nil {
+		json.NewEncoder(w).Encode(DeleteFigureDescriptionsResponse{
+			Success: false, Error: fmt.Sprintf("Delete error: %v", err),
+		})
+		return
+	}
+
+	log.Printf("Deleted %d figure descriptions for patent %s", deleted, normalized)
+
+	json.NewEncoder(w).Encode(DeleteFigureDescriptionsResponse{
+		Success: true,
+		Deleted: deleted,
 	})
 }
 

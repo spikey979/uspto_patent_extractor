@@ -117,6 +117,63 @@ func getFigureVersions(pubNumber string, figureNum int) ([]FigureDescriptionReco
 	return scanFigureDescriptions(rows)
 }
 
+// getFigureDescriptionStatus returns a summary of all figure descriptions for a patent
+func getFigureDescriptionStatus(pubNumber string) ([]FigureStatusSummary, int, error) {
+	rows, err := db.Query(`
+		SELECT figure_num,
+		       MAX(figure_file) AS figure_file,
+		       COUNT(*) AS version_count,
+		       MAX(version) AS latest_version,
+		       (array_agg(model ORDER BY version DESC))[1] AS latest_model,
+		       MAX(created_at) AS latest_date,
+		       LENGTH((array_agg(description ORDER BY version DESC))[1]) AS desc_len
+		FROM figure_descriptions
+		WHERE pub_number = $1
+		GROUP BY figure_num
+		ORDER BY figure_num
+	`, pubNumber)
+	if err != nil {
+		return nil, 0, fmt.Errorf("failed to query figure status: %w", err)
+	}
+	defer rows.Close()
+
+	var summaries []FigureStatusSummary
+	totalVersions := 0
+	for rows.Next() {
+		var s FigureStatusSummary
+		var figureFile, model sql.NullString
+		var latestDate time.Time
+
+		err := rows.Scan(&s.FigureNum, &figureFile, &s.VersionCount, &s.LatestVersion, &model, &latestDate, &s.DescriptionLen)
+		if err != nil {
+			return nil, 0, fmt.Errorf("failed to scan status row: %w", err)
+		}
+		if figureFile.Valid {
+			s.FigureFile = figureFile.String
+		}
+		if model.Valid {
+			s.LatestModel = model.String
+		}
+		s.LatestDate = latestDate.Format(time.RFC3339)
+		totalVersions += s.VersionCount
+		summaries = append(summaries, s)
+	}
+	return summaries, totalVersions, nil
+}
+
+// deleteFigureDescriptions removes all figure descriptions for a patent, returns count deleted
+func deleteFigureDescriptions(pubNumber string) (int, error) {
+	result, err := db.Exec(`DELETE FROM figure_descriptions WHERE pub_number = $1`, pubNumber)
+	if err != nil {
+		return 0, fmt.Errorf("failed to delete figure descriptions: %w", err)
+	}
+	count, err := result.RowsAffected()
+	if err != nil {
+		return 0, fmt.Errorf("failed to get rows affected: %w", err)
+	}
+	return int(count), nil
+}
+
 // scanFigureDescriptions scans rows into FigureDescriptionRecord slices
 func scanFigureDescriptions(rows *sql.Rows) ([]FigureDescriptionRecord, error) {
 	var records []FigureDescriptionRecord

@@ -26,6 +26,8 @@ func main() {
 	http.HandleFunc("GET /api/patent/{pub}/figures/{num}/descriptions", handleGetFigureVersions)
 	http.HandleFunc("GET /api/patent/{pub}/figures/descriptions", handleGetFigureDescriptions)
 	http.HandleFunc("POST /api/patent/{pub}/figures/descriptions", handleSaveFigureDescriptions)
+	http.HandleFunc("GET /api/patent/{pub}/figures/descriptions/status", handleFigureDescriptionStatus)
+	http.HandleFunc("DELETE /api/patent/{pub}/figures/descriptions", handleDeleteFigureDescriptions)
 
 	// Patent document endpoint (catch-all for /api/patent/{pub})
 	http.HandleFunc("/api/patent/", handleGetPatent)

@@ -318,3 +318,32 @@ type FigureDescriptionsResponse struct {
 	Figures   []FigureDescriptionRecord `json:"figures"`
 	Error     string                    `json:"error,omitempty"`
 }
+
+// FigureStatusSummary gives a quick overview of a single figure's descriptions
+type FigureStatusSummary struct {
+	FigureNum      int    `json:"figure_num"`
+	FigureFile     string `json:"figure_file,omitempty"`
+	VersionCount   int    `json:"version_count"`
+	LatestVersion  int    `json:"latest_version"`
+	LatestModel    string `json:"latest_model,omitempty"`
+	LatestDate     string `json:"latest_date"`
+	DescriptionLen int    `json:"description_length"`
+}
+
+// FigureStatusResponse is the response for the status endpoint
+type FigureStatusResponse struct {
+	Success        bool                  `json:"success"`
+	PubNumber      string                `json:"pub_number"`
+	HasDescriptions bool                 `json:"has_descriptions"`
+	TotalFigures   int                   `json:"total_figures"`
+	TotalVersions  int                   `json:"total_versions"`
+	Figures        []FigureStatusSummary `json:"figures"`
+	Error          string                `json:"error,omitempty"`
+}
+
+// DeleteFigureDescriptionsResponse is the response for the DELETE endpoint
+type DeleteFigureDescriptionsResponse struct {
+	Success bool   `json:"success"`
+	Deleted int    `json:"deleted"`
+	Error   string `json:"error,omitempty"`
+}
